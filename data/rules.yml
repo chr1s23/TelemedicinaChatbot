@@ -1,0 +1,122 @@
+version: "3.1"
+
+rules:
+
+- rule: activar automuestreo form
+  steps:
+  - intent: iniciar_proceso #enviar un mensaje desde la app por defecto con el texto "quiero hacerme el automuestreo"
+  #- action: utter_automuestreo_introduccion
+  - action: automuestreo_form
+  - active_loop: automuestreo_form
+  #- rule: terminar formulario no cumple edad
+  #  condition:
+  #  - active_loop: automuestreo_form
+  #  - slot_was_set:
+  #    - edad_usuario: False
+  #  steps:
+  #  - action: action_deactivate_loop
+  #  - active_loop: null
+  #- rule: terminar formulario no es sexualmente activa
+  #  condition:
+  #  - active_loop: automuestreo_form
+  #  - slot_was_set:
+  #  - es_sexual_activa: false
+  #  steps:
+  #  - action: automuestreo_form
+  #  - active_loop: null
+  #  - action: utter_no_tiene_relacion_sexual
+
+  #- rule: terminar formulario relaciones recientes
+  #  condition:
+  #  - active_loop: automuestreo_form
+  #  - slot_was_set:
+  #    - relacion_reciente_horas: true
+  #  steps:
+  #  - action: automuestreo_form
+  #  - active_loop: null
+  #  - action: utter_relacion_reciente
+
+  #- rule: terminar formulario no tiene capacidad mental
+  #  condition:
+  #  - active_loop: automuestreo_form
+  #  - slot_was_set:
+  #    - tiene_capacidad_mental: false
+  #  steps:
+  #  - action: automuestreo_form
+  #  - active_loop: null
+  #  - action: utter_no_capacidad_mental
+
+  #- rule: terminar formulario no habla espanol
+  #  condition:
+  #  - active_loop: automuestreo_form
+  #  - slot_was_set:
+  #    - habla_espanol: false
+  #  steps:
+  #  - action: automuestreo_form
+  #  - active_loop: null
+  #  - action: utter_no_habla_espanol
+
+  #- rule: terminar formulario esta embarazada
+  #  condition:
+  #  - active_loop: automuestreo_form
+  #  - slot_was_set:
+  #    - esta_embarazada: true
+  #  steps:
+  #  - action: automuestreo_form
+  #  - active_loop: null
+  #  - action: utter_esta_embarazada
+
+  #- rule: terminar formulario tiene tratamiento previo
+  #  condition:
+  #  - active_loop: automuestreo_form
+  #  - slot_was_set:
+  #    - tratamiento_previo_ccu: true
+  #  steps:
+  #  - action: automuestreo_form
+  #  - active_loop: null
+  #  - action: utter_tratamiento_previo_ccu
+
+  #- rule: terminar formulario toma medicamento intravaginal
+  #  condition:
+  #  - active_loop: automuestreo_form
+  #  - slot_was_set:
+  #    - toma_medi_intravaginal: true
+  #  steps:
+  #  - action: automuestreo_form
+  #  - active_loop: null
+  #  - action: utter_toma_medi_intravaginal
+
+  #- rule: terminar formulario esta en periodo menstrual
+  #  condition:
+  #  - active_loop: automuestreo_form
+  #  - slot_was_set:
+  #    - esta_menstruando_ahora: true
+  #  steps:
+  #  - action: automuestreo_form
+  #  - active_loop: null
+  #  - action: utter_esta_menstruando_ahora
+
+- rule: terminar formulario completo automuestreo
+  condition:
+  - active_loop: automuestreo_form
+  #- slot_was_set:
+  #  - formulario_completo: true
+  steps:
+  - action: automuestreo_form
+  - active_loop: null
+  - action: action_do_nothing #utter_proceso_completo_indicaciones
+
+#- rule: terminar formulario incompleto automuestreo
+#  condition:
+#  - active_loop: automuestreo_form
+#  - slot_was_set:
+#    - formulario_completo: false
+#  steps:
+#  - action: automuestreo_form
+#  - active_loop: null
+#  - action: action_do_nothing # o cualquier acción que quieras ejecutar
+
+- rule: out-of-scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope

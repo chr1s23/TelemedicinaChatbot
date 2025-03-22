@@ -1,0 +1,140 @@
+version: "3.1"
+nlu:
+- intent: saludo
+  examples: |
+    - hola
+    - buenos días
+    - qué tal
+    - hola, ¿cómo estás?
+    - saludos
+    - tengo una pregunta
+    - quiero preguntarte algo
+    - ¿me puedes ayudar?
+    - ¿puedes ayudarme?
+    - ¿estás ahí?
+    - ¿me escuchas?
+    - ¿me puedes responder?
+    - ¿me puedes decir algo?
+- intent: despedida
+  examples: |
+    - adiós
+    - hasta luego
+    - nos vemos
+    - chao
+    - cuídate
+    - es todo
+    - gracias
+    - muchas gracias
+    - gracias por tu ayuda
+    - gracias por la información
+    - gracias por todo
+    - gracias por tu tiempo
+    - gracias por tu atención
+    - charo
+    - vih
+- intent: iniciar_proceso
+  examples: |
+    - comenzar automuestreo
+    - comenzar proceso
+    - quiero hacerme el automuestreo
+    - quiero tomarme la prueba
+    - comenzar auto prueba
+    - comenzar prueba
+    - quiero comenzar la prueba
+    - quiero comenzar el automuestreo
+    - iniciar proceso
+    - iniciar automuestreo
+    - comenzar
+    - enfermedad
+- intent: detener_proceso
+  examples: |
+    - detener proceso
+    - detener automuestreo
+    - parar proceso
+    - parar automuestreo
+    - quiero detener el proceso
+    - quiero detener la prueba
+    - quiero detener el automuestreo
+    - detener
+    - parar
+    - salir
+- intent: confirmacion
+  examples: |
+    - sí
+    - claro que sí
+    - correcto
+    - afirmativo
+    - por supuesto
+    - sí, por favor
+    - sí, gracias
+    - sí, claro
+    - sí, correcto
+    - sí, está bien
+    - sí, quiero continuar
+    - sí, quiero seguir
+- intent: negacion
+  examples: |
+    - no
+    - negativo
+    - para nada
+    - no, gracias
+    - no, por favor
+    - no, claro que no
+    - no, está mal
+    - nunca
+- intent: consult_info
+  examples: |
+    - violencia de genero
+    - acoso sexual
+    - que es el VPH
+    - que es el virus del papiloma humano
+    - que es el ccu
+    - que es el cancer de cuello uterino
+    - salud sexual
+    - salud reproductiva
+    - salud sexual y reproductiva
+    - que es la salud sexual
+    - relaciones sexuales
+    - cancer de cuello uterino
+    - virus del papiloma humano
+- intent: out_of_scope
+  examples: |
+    - ¿Qué tiempo hace hoy?
+    - ¿Va a llover mañana?
+    - ¿Cuál es el pronóstico del clima para esta semana?
+    - ¿Qué temperatura hay ahora en Quito?
+    - ¿Cuándo fue la Segunda Guerra Mundial?
+    - ¿Quién descubrió América?
+    - ¿Qué pasó en la Revolución Francesa?
+    - ¿Qué es el comunismo?
+    - ¿Cuántos presidentes ha tenido México?
+    - ¿Qué partido político gobierna en España?
+    - ¿Qué significa el socialismo?
+    - ¿Qué religión predomina en India?
+    - ¿Cuáles son las tradiciones de Japón?
+    - ¿Quién ganó el Oscar a mejor película este año?
+    - ¿Qué película recomiendas para ver?
+    - ¿Cuál es la última serie de Netflix más popular?
+    - ¿Quién ganó el último mundial de fútbol?
+    - ¿Qué equipo va primero en la liga española?
+    - ¿Cuándo juega el Real Madrid?
+    - ¿Qué es la teoría de la relatividad?
+    - ¿Qué avances hay en la inteligencia artificial?
+    - ¿Cuáles son los últimos descubrimientos de la NASA?
+    - ¿Qué es el Big Bang?
+    - ¿Qué es el blockchain?
+    - ¿Cómo funciona un motor eléctrico?
+    - ¿Qué modelo de celular es el mejor este año?
+    - ¿Qué es el metaverso?
+    - ¿Qué opinas de la nueva consola de videojuegos?
+    - ¿Cómo está la economía de Estados Unidos?
+    - ¿Qué es el Producto Interno Bruto?
+    - ¿Cuánto subió el dólar hoy?
+    - ¿Qué es la inflación?
+    - ¿Quién ganó el premio Nobel de la Paz?
+    - ¿Quién es el presidente actual de Estados Unidos?
+    - ¿Qué sabes sobre Elon Musk?
+    - ¿Cuántos hijos tiene Messi?
+    - ¿Qué edad tiene Taylor Swift?
+    - ¿Qué cantante es el más famoso en 2025?
+    - 4

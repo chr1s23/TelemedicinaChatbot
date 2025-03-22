@@ -1,0 +1,45 @@
+version: "3.1"
+
+stories:
+
+#- story: detener formulario automuestreo y parar
+#  steps:
+#  - intent: iniciar_proceso
+#  - action: automuestreo_form
+#  - active_loop: automuestreo_form
+#  - intent: detener_proceso
+#  - action: utter_preguntar_continuar
+#  - intent: negacion
+#  - action: action_deactivate_loop
+#  - active_loop: null
+#  - action: utter_formulario_detenido
+
+#- story: detener formulario automuestreo y continuar
+#  steps:
+#  - intent: iniciar_proceso
+#  - action: automuestreo_form
+#  - active_loop: automuestreo_form
+#  - intent: detener_proceso
+#  - action: utter_preguntar_continuar
+#  - intent: confirmacion
+#  - action: automuestreo_form
+#  - active_loop: automuestreo_form
+
+- story: consultar infomracion adicional
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: consult_info
+  - action: action_consult_info
+
+- story: saludo y despedida
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: despedida
+  - action: utter_despedida
+
+- story: consultar informacion
+  steps:
+  - intent: consult_info
+  - action: action_consult_info

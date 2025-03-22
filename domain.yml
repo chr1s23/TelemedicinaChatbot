@@ -1,0 +1,330 @@
+version: '3.1'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- confirmacion
+- consult_info
+- despedida
+- detener_proceso
+- iniciar_proceso
+- negacion
+- out_of_scope
+- saludo
+actions:
+- action_do_nothing
+- action_consult_info
+- validate_automuestreo_form
+entities:
+- rango_edad
+- sexual_activa
+- relacion_reciente
+- capacidad_mental
+- idioma_espanol
+- embarazada
+- tratamiento_ccu
+- medi_intravaginal
+- menstruando
+- ets
+- enfermedad_autoinmune
+
+slots:
+  formulario_completo:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: custom
+  edad_usuario:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: rango_edad
+  es_sexual_activa:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: sexual_activa
+  tiene_capacidad_mental:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: capacidad_mental
+  habla_espanol:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: idioma_espanol
+  esta_embarazada:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: embarazada
+  tratamiento_previo_ccu:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: tratamiento_ccu
+  relacion_reciente_horas:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: relacion_reciente
+  toma_medi_intravaginal:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: medi_intravaginal
+  esta_menstruando_ahora:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: menstruando
+  fecha_ultima_menstruacion:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+    #- type: from_text
+    #  conditions:
+    #  - active_loop: automuestreo_form
+    #    requested_slot: fecha_ultima_menstruacion
+  fecha_ultimo_pap:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+    #- type: from_text
+    #  conditions:
+    #  - active_loop: automuestreo_form
+    #    requested_slot: fecha_ultimo_pap
+  fecha_ultimo_vph:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+    #- type: from_text
+    #  conditions:
+    #  - active_loop: automuestreo_form
+    #    requested_slot: fecha_ultimo_vph
+  num_parejas_sexuales:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+    #- type: from_text
+    #  conditions:
+    #  - active_loop: automuestreo_form
+    #    requested_slot: num_parejas_sexuales
+  tiene_ets:
+    type: bool
+    mappings:
+    - type: from_entity
+      entity: ets
+  nombre_ets:
+    type: text
+    mappings:
+    - type: custom
+  tiene_enfermedad_autoinmune:
+    type: bool
+    mappings:
+    - type: from_entity
+      entity: enfermedad_autoinmune
+  nombre_enfermedad_autoinmune:
+    type: text
+    mappings:
+    - type: custom
+forms:
+  automuestreo_form:
+    required_slots:
+    - edad_usuario
+    #- es_sexual_activa
+    #- relacion_reciente_horas
+    #- tiene_capacidad_mental
+    #- habla_espanol
+    #- esta_embarazada
+    #- tratamiento_previo_ccu
+    #- toma_medi_intravaginal
+    #- esta_menstruando_ahora
+    #- fecha_ultima_menstruacion
+    #- fecha_ultimo_pap
+    #- fecha_ultimo_vph
+    #- num_parejas_sexuales
+    #- tiene_ets
+    #- tiene_enfermedad_autoinmune
+responses:
+  utter_saludo:
+  - text: |
+      👋 ¡Hola! Soy tu asistente virtual de salud. 
+      Estoy aquí para responder tus preguntas sobre Virus del Papiloma Humano (VPH), Cáncer de Cuello Uterino (CCU) y temas relacionados con tu salud sexual y reproductiva. 
+      Si tienes alguna duda, puedes preguntarme. ¡Estoy para ayudarte! 😊
+  utter_despedida:
+  - text: |
+      ✅ Gracias por confiar en este espacio de información. 
+      Si tienes más preguntas sobre VPH, Cáncer de Cuello Uterino o salud sexual y reproductiva, no dudes en volver. 
+      ¡Cuida de ti y de tu salud! 😊
+  utter_out_of_scope:
+  - text: Lo siento, pero solo puedo brindar información sobre salud sexual y reproductiva, así como apoyo en casos de violencia de género o abuso. ¿Puedo ayudarte con alguna duda sobre estos temas?
+  utter_ask_automuestreo_form_edad_usuario:
+  - text: |
+      📋 **¡Comenzemos con el proceso!**
+      Primero debemos asegurarnos de que eres apta para realizarte el automuestreo en este momento.
+      Por favor, responde a las siguientes preguntas con sinceridad.
+      ¿Tu edad esta entre los 30 y 65 años?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"rango_edad":true}}
+    - title: No
+      payload: /negacion{{"rango_edad":false}}
+  utter_no_cumple_edad:
+  - text: Lo sentimos, no puedes ser parte del estudio porque no cumples con la edad requerida (30 - 65 años). Sin embargo, es importante que te realices exámenes de Papanicolaou (Pap) y pruebas de Virus del Papiloma Humano (VPH) regularmente.
+  utter_ask_automuestreo_form_es_sexual_activa:
+  - text: ¿Tienes o has tenido vida sexual activa?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"sexual_activa":true}}
+    - title: No
+      payload: /negacion{{"sexual_activa":false}}
+  utter_no_tiene_relacion_sexual:
+  - text: Si no has tenido relaciones sexuales entonces no es necesario que te realices el automuestreo en este momento.
+  utter_ask_automuestreo_form_relacion_reciente_horas:
+  - text: ¿Has tenido relaciones sexuales en las últimas 48 horas?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"relacion_reciente":true}}
+    - title: No
+      payload: /negacion{{"relacion_reciente":false}}
+  utter_relacion_reciente:
+  - text: Lo sentimos, en este momento no puedes realizarte el automuestreo. Puedes intentar otro día.
+  utter_ask_automuestreo_form_tiene_capacidad_mental:
+  - text: ¿Tienes la capacidad de entender la naturaleza, el propósito y los posibles riesgos del estudio, así como de dar un consentimiento informado?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"capacidad_mental":true}}
+    - title: No
+      payload: /negacion{{"capacidad_mental":false}}
+  utter_no_capacidad_mental:
+  - text: Lo sentimos, no puedes realizarte el automuestreo en este momento.
+  utter_ask_automuestreo_form_habla_espanol:
+  - text: ¿Eres capaz de comunicarte en español?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"idioma_espanol":true}}
+    - title: No
+      payload: /negacion{{"idioma_espanol":false}}
+  utter_no_habla_espanol:
+  - text: Lo sentimos, el proceso solo está disponible en español.
+  utter_ask_automuestreo_form_esta_embarazada:
+  - text: ¿Estás embarazada?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"embarazada":true}}
+    - title: No
+      payload: /negacion{{"embarazada":false}}
+  utter_esta_embarazada:
+  - text: Lo sentimos, no puedes ser parte del estudio en este momento. Sin embargo, es importante que puedas hacerlo cuando ya no estés embarazada.
+  utter_ask_automuestreo_form_tratamiento_previo_ccu:
+  - text: ¿Has tenido un tratamiento previo del cuello uterino (quimioterapia, LEEP, LLETZ) en los últimos 6 meses?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"tratamiento_ccu":true}}
+    - title: No
+      payload: /negacion{{"tratamiento_ccu":false}}
+  utter_tratamiento_previo_ccu:
+  - text: Lo sentimos, no puedes ser parte del estudio en este momento.
+  utter_ask_automuestreo_form_toma_medi_intravaginal:
+  - text: ¿Has utilizado algún medicamento intravaginal en la última semana?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"medi_intravaginal":true}}
+    - title: No
+      payload: /negacion{{"medi_intravaginal":false}}
+  utter_toma_medi_intravaginal:
+  - text: Lo sentimos, no puedes realizarte el automuestreo en este momento.
+  utter_ask_automuestreo_form_esta_menstruando_ahora:
+  - text: ¿Estás con tu período menstrual en este momento?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"menstruando":true}}
+    - title: No
+      payload: /negacion{{"menstruando":false}}
+  utter_esta_menstruando_ahora:
+  - text: Lo sentimos, debes esperar hasta que termine tu período menstrual para realizar el automuestreo.
+  utter_ask_automuestreo_form_fecha_ultima_menstruacion:
+  - text: |
+      Listo hemos terminado con la validacion de los criterios de inclusion y exclusion.
+      ¿Fecha del primer día de su última menstruación?
+    custom:
+      teclado_fecha: true
+      meses_limite: 2 #hasta un dia antetrior
+      # agregar boton opciones
+      # validar la ultima fecha de menstruacion limite de tiempo maximo dos meses antes
+  utter_ask_automuestreo_form_fecha_ultimo_pap:
+  - text: ¿Hace cuánto tiempo te realizaste un examen de Papanicolaou (Pap)?
+    custom:
+      teclado_fecha: true
+      mostrar_nunca: true
+  utter_ask_automuestreo_form_fecha_ultimo_vph:
+  - text: ¿Hace cuánto tiempo te realizaste una prueba de Virus del Papiloma Humano (VPH)?
+    custom:
+      teclado_fecha: true
+      mostrar_nunca: true
+  utter_ask_automuestreo_form_num_parejas_sexuales:
+  - text: 'Por favor, indica el número de parejas sexuales que has tenido. (Ejemplo: 2)'
+    custom:
+      teclado_numerico: true
+  utter_ask_automuestreo_form_tiene_ets:
+  - text: ¿Ha sido diagnosticado o sospecha de tener alguna Enfermedad de Transmisión Sexual (ETS)?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"ets":true}}
+    - title: No
+      payload: /negacion{{"ets":false}}
+      # boton mas informacion
+  utter_ask_nombre_ets:
+  - text: Por favor indica el nombre de la ETS que tienes o has tenido.
+  # enviar opcioens de nombre de enfernedades
+  utter_ask_automuestreo_form_tiene_enfermedad_autoinmune:
+  - text: ¿Ha sido diagnosticado con alguna enfermedad autoinmune?
+    buttons:
+    - title: Si
+      payload: /confirmacion{{"enfermedad_autoinmune":true}}
+    - title: No
+      payload: /negacion{{"enfermedad_autoinmune":false}}
+      #boton mas informacion
+  utter_ask_nombre_enfermedad_autoinmune:
+  - text: Por favor indica el nombre de la enfermedad autoinmune.
+  #enciar nombres de opciones de nefemredadees
+  utter_proceso_completo_indicaciones:
+  - text: |
+      ✅ ¡Listo! Cumples con todos los criterios para realizarte la prueba de automuestreo.
+      Recuerda que **debes realizar la toma de muestra en este momento**, ya que tienes **30 minutos para completar el procedimiento**.
+      👉 Ahora, por favor **presiona el botón que aparece en pantalla para que puedas escanear el dispositivo**.
+      🔴 Importante:
+        Una vez hayas tomado la muestra, **no olvides entregar el dispositivo en el GAD más cercano**.
+      Si no completas el proceso en el tiempo indicado, tendrás que **volver a iniciar desde cero respondiendo nuevamente todas las preguntas**.
+      🕒 ¡Tienes 30 minutos! Comienza ahora presionando el botón.
+    custom:
+      text: mostrar video
+  utter_formulario_detenido:
+  - text: |
+      🛑 El proceso de automuestreo ha sido detenido.
+      Si deseas continuar, puedes iniciar nuevamente el proceso.
+      ¿En qué más puedo ayudarte?
+  utter_preguntar_continuar:
+  - text: |
+      ¿Deseas continuar con el proceso de automuestreo?
+      Por favor, responde con "Sí" o "No".
+  utter_automuestreo_introduccion:
+  - text: |
+      📋 **¡Comenzemos con el proceso!**
+      Primero debemos asegurarnos de que eres apta para realizarte el automuestreo en este momento.
+      Por favor, responde a las siguientes preguntas con sinceridad.

@@ -1,0 +1,47 @@
+# Entornos virtuales de Python
+venv/
+.env
+*.env
+ENV/
+env/
+
+# Archivos de cache de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs y archivos de depuración
+*.log
+*.log.*
+
+# Archivos de configuración de IDEs
+.vscode/
+.idea/
+
+# Datos generados por Rasa
+*.db
+events.sql
+credentials.yml  # si contiene credenciales sensibles, puedes manejarlo con .env
+
+# Modelos entrenados
+models/
+*.tar.gz
+
+# Archivos de prueba generados
+tests
+tests/results/
+tests/test_results/
+
+# Otros archivos temporales
+.DS_Store
+Thumbs.db
+
+# Datos de rastreo de Rasa X (si lo usas)
+tracker_store/
+results/
+
+# Archivos de Docker (si aplican)
+*.pid
+*.seed
+
+actions/cpu_and_mobile/
