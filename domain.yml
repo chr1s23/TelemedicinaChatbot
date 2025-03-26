@@ -8,6 +8,8 @@ intents:
 - iniciar_proceso
 - out_of_scope
 - saludo
+- confirmacion
+- negacion
 actions:
 - action_finish_form
 - action_consult_info

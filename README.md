@@ -1,2 +1,2 @@
-#Telemedicine RASA Chatbot
-This project contains all the RASA files to build a telemedicine conversational AI chatbot, including personalized actions to interact with a pre-trained LLM optimized with ONNX AI model
+# Telemedicine RASA Chatbot
+This project contains all the **RASA files** to build a **telemedicine conversational AI chatbot**, including personalized actions to interact with a **pre-trained LLM** optimized with ONNX AI model

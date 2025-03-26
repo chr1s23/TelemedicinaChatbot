@@ -43,6 +43,30 @@ nlu:
     - iniciar proceso
     - iniciar automuestreo
     - comenzar
+- intent: confirmacion
+  examples: |
+    - sí
+    - claro que sí
+    - correcto
+    - afirmativo
+    - por supuesto
+    - sí, por favor
+    - sí, gracias
+    - sí, claro
+    - sí, correcto
+    - sí, está bien
+    - sí, quiero continuar
+    - sí, quiero seguir
+- intent: negacion
+  examples: |
+    - no
+    - negativo
+    - para nada
+    - no, gracias
+    - no, por favor
+    - no, claro que no
+    - no, está mal
+    - nunca
 - intent: consult_info
   examples: |
     - violencia de genero

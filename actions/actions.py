@@ -75,7 +75,7 @@ class ActionGenerateDetailedResponse(Action):
     def name(self) -> str:
         return "action_consult_info"
     
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker):
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain):
         user_input = tracker.latest_message.get("text")
         response = generate_response(user_input)
         dispatcher.utter_message(text=response)
@@ -85,43 +85,43 @@ class ValidateAutomuestreoForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_automuestreo_form"
     
-    async def extract_fecha_ultima_menstruacion(self, tracker: Tracker) -> Dict[Text, Any]:
+    async def extract_fecha_ultima_menstruacion(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "fecha_ultima_menstruacion":
             user_input = tracker.latest_message.get("text")
             return {"fecha_ultima_menstruacion": user_input}
         return {}
     
-    async def extract_fecha_ultimo_pap(self, tracker: Tracker) -> Dict[Text, Any]:
+    async def extract_fecha_ultimo_pap(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "fecha_ultimo_pap":
             user_input = tracker.latest_message.get("text")
             return {"fecha_ultimo_pap": user_input}
         return {}
     
-    async def extract_fecha_ultimo_vph(self, tracker: Tracker) -> Dict[Text, Any]:
+    async def extract_fecha_ultimo_vph(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "fecha_ultimo_vph":
             user_input = tracker.latest_message.get("text")
             return {"fecha_ultimo_vph": user_input}
         return {}
     
-    async def extract_num_parejas_sexuales(self, tracker: Tracker) -> Dict[Text, Any]:
+    async def extract_num_parejas_sexuales(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "num_parejas_sexuales":
             user_input = tracker.latest_message.get("text")
             return {"num_parejas_sexuales": user_input}
         return {}
     
-    async def extract_nombre_ets(self, tracker: Tracker) -> Dict[Text, Any]:
+    async def extract_nombre_ets(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "nombre_ets":
             user_input = tracker.latest_message.get("text")
             return {"nombre_ets": user_input}
         return {}
 
-    async def extract_nombre_enfermedad_autoinmune(self, tracker: Tracker) -> Dict[Text, Any]:
+    async def extract_nombre_enfermedad_autoinmune(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "nombre_enfermedad_autoinmune":
             user_input = tracker.latest_message.get("text")
             return {"nombre_enfermedad_autoinmune": user_input}
         return {}
 
-    async def required_slots(self,domain_slots: List[Text],tracker: Tracker) -> List[Text]:
+    async def required_slots(self, domain_slots: List[Text], dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
         # Empieza con los slots definidos en el domain.yml
         slots_requeridos = domain_slots.copy()
         # Slots adicionales em base a cumplir con los criterios de inclusion y exclusion
@@ -166,88 +166,88 @@ class ValidateAutomuestreoForm(FormValidationAction):
 
         return slots_requeridos
 
-    def validate_edad_usuario(self, slot_value: bool, dispatcher: CollectingDispatcher) -> Dict[Text, Any]:
+    def validate_edad_usuario(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is True:
             return {"edad_usuario": True}
         else:
             dispatcher.utter_message(response="utter_no_cumple_edad")
             return {"formulario_completo": False}
         
-    def validate_es_sexual_activa(self, slot_value: bool, dispatcher: CollectingDispatcher) -> Dict[Text, Any]:
+    def validate_es_sexual_activa(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is True:
             return {"es_sexual_activa": True}
         else:
             dispatcher.utter_message(response="utter_no_tiene_relacion_sexual")
             return {"formulario_completo": False}
         
-    def validate_tiene_capacidad_mental(self, slot_value: bool, dispatcher: CollectingDispatcher) -> Dict[Text, Any]:
+    def validate_tiene_capacidad_mental(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is True:
             return {"tiene_capacidad_mental": True}
         else:
             dispatcher.utter_message(response="utter_no_capacidad_mental")
             return {"formulario_completo": False}
         
-    def validate_habla_espanol(self, slot_value: bool, dispatcher: CollectingDispatcher) -> Dict[Text, Any]:
+    def validate_habla_espanol(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is True:
             return {"habla_espanol": True}
         else:
             dispatcher.utter_message(response="utter_no_habla_espanol")
             return {"formulario_completo": False}
         
-    def validate_esta_embarazada(self, slot_value: bool, dispatcher: CollectingDispatcher) -> Dict[Text, Any]:
+    def validate_esta_embarazada(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is False:
             return {"esta_embarazada": False}
         else:
             dispatcher.utter_message(response="utter_esta_embarazada")
             return {"formulario_completo": False}
         
-    def validate_tratamiento_previo_ccu(self, slot_value: bool, dispatcher: CollectingDispatcher) -> Dict[Text, Any]:
+    def validate_tratamiento_previo_ccu(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is False:
             return {"tratamiento_previo_ccu": False}
         else:
             dispatcher.utter_message(response="utter_tratamiento_previo_ccu")
             return {"formulario_completo": False}
         
-    def validate_relacion_reciente_horas(self, slot_value: bool, dispatcher: CollectingDispatcher) -> Dict[Text, Any]:
+    def validate_relacion_reciente_horas(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is False:
             return {"relacion_reciente_horas": False}
         else:
             dispatcher.utter_message(response="utter_relacion_reciente")
             return {"formulario_completo": False}
         
-    def validate_toma_medi_intravaginal(self, slot_value: bool, dispatcher: CollectingDispatcher) -> Dict[Text, Any]:
+    def validate_toma_medi_intravaginal(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is False:
             return {"toma_medi_intravaginal": False}
         else:
             dispatcher.utter_message(response="utter_toma_medi_intravaginal")
             return {"formulario_completo": False}
         
-    def validate_esta_menstruando_ahora(self, slot_value: bool, dispatcher: CollectingDispatcher) -> Dict[Text, Any]:
+    def validate_esta_menstruando_ahora(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is False:
             return {"esta_menstruando_ahora": False}
         else:
             dispatcher.utter_message(response="utter_esta_menstruando_ahora")
             return {"formulario_completo": False}
         
-    def validate_fecha_ultima_menstruacion(self, slot_value: Any) -> Dict[Text, Any]:
+    def validate_fecha_ultima_menstruacion(self, slot_value: Any, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is None:
             return {"fecha_ultima_menstruacion": None}
         else:
             return {"fecha_ultima_menstruacion": slot_value}
         
-    def validate_fecha_ultimo_pap(self, slot_value: Any) -> Dict[Text, Any]:
+    def validate_fecha_ultimo_pap(self, slot_value: Any, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is None:
             return {"fecha_ultimo_pap": None}
         else:
             return {"fecha_ultimo_pap": slot_value}
         
-    def validate_fecha_ultimo_vph(self, slot_value: Any) -> Dict[Text, Any]:
+    def validate_fecha_ultimo_vph(self, slot_value: Any, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is None:
             return {"fecha_ultimo_vph": None}
         else:
             return {"fecha_ultimo_vph": slot_value}
         
-    def validate_num_parejas_sexuales(self, slot_value: Any) -> Dict[Text, Any]:
+    def validate_num_parejas_sexuales(self, slot_value: Any, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         if slot_value is None:
             return {"num_parejas_sexuales": None}
         else:
@@ -260,7 +260,7 @@ class ActionFinishForm(Action):
     def name(self) -> Text:
         return "action_finish_form"
 
-    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker):
+    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]):
         if tracker.get_slot("formulario_completo") is True:
             dispatcher.utter_message(response="utter_proceso_completo_indicaciones")
         else:
