@@ -30,8 +30,6 @@ nlu:
     - gracias por todo
     - gracias por tu tiempo
     - gracias por tu atención
-    - charo
-    - vih
 - intent: iniciar_proceso
   examples: |
     - comenzar automuestreo
@@ -45,7 +43,6 @@ nlu:
     - iniciar proceso
     - iniciar automuestreo
     - comenzar
-    - enfermedad
 - intent: detener_proceso
   examples: |
     - detener proceso

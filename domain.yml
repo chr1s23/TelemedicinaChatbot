@@ -93,37 +93,21 @@ slots:
     influence_conversation: false
     mappings:
     - type: custom
-    #- type: from_text
-    #  conditions:
-    #  - active_loop: automuestreo_form
-    #    requested_slot: fecha_ultima_menstruacion
   fecha_ultimo_pap:
     type: text
     influence_conversation: false
     mappings:
     - type: custom
-    #- type: from_text
-    #  conditions:
-    #  - active_loop: automuestreo_form
-    #    requested_slot: fecha_ultimo_pap
   fecha_ultimo_vph:
     type: text
     influence_conversation: false
     mappings:
     - type: custom
-    #- type: from_text
-    #  conditions:
-    #  - active_loop: automuestreo_form
-    #    requested_slot: fecha_ultimo_vph
   num_parejas_sexuales:
     type: text
     influence_conversation: false
     mappings:
     - type: custom
-    #- type: from_text
-    #  conditions:
-    #  - active_loop: automuestreo_form
-    #    requested_slot: num_parejas_sexuales
   tiene_ets:
     type: bool
     mappings:
@@ -146,20 +130,6 @@ forms:
   automuestreo_form:
     required_slots:
     - edad_usuario
-    #- es_sexual_activa
-    #- relacion_reciente_horas
-    #- tiene_capacidad_mental
-    #- habla_espanol
-    #- esta_embarazada
-    #- tratamiento_previo_ccu
-    #- toma_medi_intravaginal
-    #- esta_menstruando_ahora
-    #- fecha_ultima_menstruacion
-    #- fecha_ultimo_pap
-    #- fecha_ultimo_vph
-    #- num_parejas_sexuales
-    #- tiene_ets
-    #- tiene_enfermedad_autoinmune
 responses:
   utter_saludo:
   - text: |
