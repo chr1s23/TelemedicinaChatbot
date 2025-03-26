@@ -264,6 +264,6 @@ class ActionFinishForm(Action):
         if tracker.get_slot("formulario_completo") is True:
             dispatcher.utter_message(response="utter_proceso_completo_indicaciones")
         else:
-            dispatcher.utter_message(text="Gracias por particiar en el estudio 😊, en este momento no puedes realizarte el automuestreo. Sin embargo, es importante que intentes en otra ocasion.")
+            dispatcher.utter_message(text="Gracias por participar en el estudio. 😊 En este momento, no eres apta para hacerte el automuestreo, pero te invitamos a intentarlo más adelante. ¡Apreciamos tu interés!")
         return []
         

@@ -43,18 +43,6 @@ nlu:
     - iniciar proceso
     - iniciar automuestreo
     - comenzar
-- intent: detener_proceso
-  examples: |
-    - detener proceso
-    - detener automuestreo
-    - parar proceso
-    - parar automuestreo
-    - quiero detener el proceso
-    - quiero detener la prueba
-    - quiero detener el automuestreo
-    - detener
-    - parar
-    - salir
 - intent: confirmacion
   examples: |
     - sí

@@ -6,13 +6,12 @@ intents:
 - confirmacion
 - consult_info
 - despedida
-- detener_proceso
 - iniciar_proceso
 - negacion
 - out_of_scope
 - saludo
 actions:
-- action_do_nothing
+- action_finish_form
 - action_consult_info
 - validate_automuestreo_form
 entities:
@@ -131,31 +130,36 @@ forms:
     required_slots:
     - edad_usuario
 responses:
+  #Respuestas informativas generales
   utter_saludo:
   - text: |
       👋 ¡Hola! Soy tu asistente virtual de salud. 
-      Estoy aquí para responder tus preguntas sobre Virus del Papiloma Humano (VPH), Cáncer de Cuello Uterino (CCU) y temas relacionados con tu salud sexual y reproductiva. 
+      Estoy aquí para responder tus preguntas sobre el **Automuestreo, Virus del Papiloma Humano (VPH), Cáncer de Cuello Uterino (CCU)** y temas relacionados con tu salud sexual y reproductiva. 
       Si tienes alguna duda, puedes preguntarme. ¡Estoy para ayudarte! 😊
   utter_despedida:
   - text: |
       ✅ Gracias por confiar en este espacio de información. 
-      Si tienes más preguntas sobre VPH, Cáncer de Cuello Uterino o salud sexual y reproductiva, no dudes en volver. 
+      Si tienes más preguntas sobre **Automuestreo, VPH, Cáncer de Cuello Uterino o salud sexual y reproductiva**, no dudes en volver. 
       ¡Cuida de ti y de tu salud! 😊
   utter_out_of_scope:
-  - text: Lo siento, pero solo puedo brindar información sobre salud sexual y reproductiva, así como apoyo en casos de violencia de género o abuso. ¿Puedo ayudarte con alguna duda sobre estos temas?
+  - text: |
+      Lo siento, no puedo responder ese tipo de preguntas.
+      Puedo responder pregutnas sobre el **Virus del Papiloma Humano (VPH), Cáncer de Cuello Uterino (CCU), Automuestreo o salud sexual y reproductiva**.
+      Si tienes alguna pregunta sobre estos temas, estaré encantado de ayudarte. 😊
+  #Respuestas correspondientes al formulario, criterios de inclusion y exclusion
   utter_ask_automuestreo_form_edad_usuario:
   - text: |
-      📋 **¡Comenzemos con el proceso!**
-      Primero debemos asegurarnos de que eres apta para realizarte el automuestreo en este momento.
-      Por favor, responde a las siguientes preguntas con sinceridad.
-      ¿Tu edad esta entre los 30 y 65 años?
+      📋 **¡Comenzemos con el proceso de Automuestreo!**
+      Primero debemos asegurarnos de que **eres apta** para realizarte el automuestreo en este momento.
+      Por favor, ¡responde a las siguientes preguntas con sinceridad!.
+      ¿Tu edad está entre los 30 y 65 años?
     buttons:
     - title: Si
       payload: /confirmacion{{"rango_edad":true}}
     - title: No
       payload: /negacion{{"rango_edad":false}}
   utter_no_cumple_edad:
-  - text: Lo sentimos, no puedes ser parte del estudio porque no cumples con la edad requerida (30 - 65 años). Sin embargo, es importante que te realices exámenes de Papanicolaou (Pap) y pruebas de Virus del Papiloma Humano (VPH) regularmente.
+  - text: Lo sentimos, no puedes ser parte del estudio porque **no cumples con la edad requerida (30 - 65 años)**. Sin embargo, es importante que te realices exámenes de Papanicolaou (Pap) y pruebas de Virus del Papiloma Humano (VPH) regularmente.
   utter_ask_automuestreo_form_es_sexual_activa:
   - text: ¿Tienes o has tenido vida sexual activa?
     buttons:
@@ -164,7 +168,7 @@ responses:
     - title: No
       payload: /negacion{{"sexual_activa":false}}
   utter_no_tiene_relacion_sexual:
-  - text: Si no has tenido relaciones sexuales entonces no es necesario que te realices el automuestreo en este momento.
+  - text: No es necesario que te realices el **Automuestreo** en este momento **si no has tenido relaciones sexuales**. ¡Recuerda cuidar de tu salud!.
   utter_ask_automuestreo_form_relacion_reciente_horas:
   - text: ¿Has tenido relaciones sexuales en las últimas 48 horas?
     buttons:
@@ -173,7 +177,7 @@ responses:
     - title: No
       payload: /negacion{{"relacion_reciente":false}}
   utter_relacion_reciente:
-  - text: Lo sentimos, en este momento no puedes realizarte el automuestreo. Puedes intentar otro día.
+  - text: Lo sentimos, para realizarte el Automuestreo **no debes tener relaciones sexuales en las últimas 48 horas**. Puedes intentar otro día.
   utter_ask_automuestreo_form_tiene_capacidad_mental:
   - text: ¿Tienes la capacidad de entender la naturaleza, el propósito y los posibles riesgos del estudio, así como de dar un consentimiento informado?
     buttons:
@@ -182,7 +186,7 @@ responses:
     - title: No
       payload: /negacion{{"capacidad_mental":false}}
   utter_no_capacidad_mental:
-  - text: Lo sentimos, no puedes realizarte el automuestreo en este momento.
+  - text: Lo sentimos, **es necesario que te encuentres bien de tu salud mental** para realizarte el Automuestreo en este momento.
   utter_ask_automuestreo_form_habla_espanol:
   - text: ¿Eres capaz de comunicarte en español?
     buttons:
@@ -191,7 +195,7 @@ responses:
     - title: No
       payload: /negacion{{"idioma_espanol":false}}
   utter_no_habla_espanol:
-  - text: Lo sentimos, el proceso solo está disponible en español.
+  - text: El proceso **solo está disponible en Español**. Sin embargo, es importante que acudas a tu **Centro de Salud más cercano** para hacerte pruebas de Papanocolaou y VPH!.
   utter_ask_automuestreo_form_esta_embarazada:
   - text: ¿Estás embarazada?
     buttons:
@@ -200,7 +204,7 @@ responses:
     - title: No
       payload: /negacion{{"embarazada":false}}
   utter_esta_embarazada:
-  - text: Lo sentimos, no puedes ser parte del estudio en este momento. Sin embargo, es importante que puedas hacerlo cuando ya no estés embarazada.
+  - text: Para realizarte el Automuestreo **es necesario que no te encuentres embarazada**. No puedes ser parte del estudio en este momento. Sin embargo, **es importante que puedas hacerlo cuando ya no estés embarazada** 😊!.
   utter_ask_automuestreo_form_tratamiento_previo_ccu:
   - text: ¿Has tenido un tratamiento previo del cuello uterino (quimioterapia, LEEP, LLETZ) en los últimos 6 meses?
     buttons:
@@ -209,7 +213,7 @@ responses:
     - title: No
       payload: /negacion{{"tratamiento_ccu":false}}
   utter_tratamiento_previo_ccu:
-  - text: Lo sentimos, no puedes ser parte del estudio en este momento.
+  - text: Lo sentimos, **es necesario que no hayas tenido tratamientos previos en los últimos 6 meses**. En este momento no eres apta para el Automuestreo, **es importante que pruebes en otra ocasión** 😊!.
   utter_ask_automuestreo_form_toma_medi_intravaginal:
   - text: ¿Has utilizado algún medicamento intravaginal en la última semana?
     buttons:
@@ -218,7 +222,7 @@ responses:
     - title: No
       payload: /negacion{{"medi_intravaginal":false}}
   utter_toma_medi_intravaginal:
-  - text: Lo sentimos, no puedes realizarte el automuestreo en este momento.
+  - text: Lo sentimos, no puedes realizarte el automuestreo en este momento. Es **importante que lo intentes en otro momento**!.
   utter_ask_automuestreo_form_esta_menstruando_ahora:
   - text: ¿Estás con tu período menstrual en este momento?
     buttons:
@@ -227,26 +231,29 @@ responses:
     - title: No
       payload: /negacion{{"menstruando":false}}
   utter_esta_menstruando_ahora:
-  - text: Lo sentimos, debes esperar hasta que termine tu período menstrual para realizar el automuestreo.
+  - text: Lo sentimos, **debes esperar hasta que termine tu período menstrual** para realizar el Automuestreo 😊.
   utter_ask_automuestreo_form_fecha_ultima_menstruacion:
   - text: |
-      Listo hemos terminado con la validacion de los criterios de inclusion y exclusion.
+      Todo listo! Hemos determinado que **sí eres apta para realizarte el Automuestreo**. Por favor, responde estas preguntas con **sinceridad** para continuar!.
       ¿Fecha del primer día de su última menstruación?
     custom:
-      teclado_fecha: true
-      meses_limite: 2 #hasta un dia antetrior
-      # agregar boton opciones
-      # validar la ultima fecha de menstruacion limite de tiempo maximo dos meses antes
+      selector_fecha: true
+      meses_limite_anteriores: 2 #fecha de menstruacion limite de tiempo maximo dos meses antes
+      dias_anteriores: 1 #hasta un dia antetrior
+      buttons:
+      - title: No Recuerdo
   utter_ask_automuestreo_form_fecha_ultimo_pap:
-  - text: ¿Hace cuánto tiempo te realizaste un examen de Papanicolaou (Pap)?
+  - text: ¿Cuándo fué tu útltimo examen de Papanicolaou (Pap)?
     custom:
-      teclado_fecha: true
-      mostrar_nunca: true
+      selector_fecha: true
+      buttons:
+      - title: Nunca
   utter_ask_automuestreo_form_fecha_ultimo_vph:
-  - text: ¿Hace cuánto tiempo te realizaste una prueba de Virus del Papiloma Humano (VPH)?
+  - text: ¿Cuándo fué tu última prueba de Virus del Papiloma Humano (VPH)?
     custom:
-      teclado_fecha: true
-      mostrar_nunca: true
+      selector_fecha: true
+      buttons:
+      - title: Nunca
   utter_ask_automuestreo_form_num_parejas_sexuales:
   - text: 'Por favor, indica el número de parejas sexuales que has tenido. (Ejemplo: 2)'
     custom:
@@ -258,10 +265,22 @@ responses:
       payload: /confirmacion{{"ets":true}}
     - title: No
       payload: /negacion{{"ets":false}}
-      # boton mas informacion
+    - title: Más información
+      payload: |
+        Las **Enfermedades de Transmisión Sexual** (ETS) son infecciones que se transmiten principalmente a través del **contacto sexual sin protección**, ya sea vaginal, anal u oral. Son causadas por virus, bacterias, hongos o parásitos. Algunas ETS comunes incluyen el **Virus del Papiloma Humano (VPH), VIH, sífilis, gonorrea y clamidia**.
+        El diagnóstico de una ETS se realiza mediante exámenes médicos como **pruebas de sangre, orina o hisopados en las zonas afectadas**. En algunos casos, los síntomas pueden ser evidentes (úlceras, secreciones, dolor), pero **muchas ETS pueden ser asintomáticas**, por lo que es clave **realizar chequeos regulares**, especialmente si se tiene una vida sexual activa.
+        La prevención incluye el **uso correcto del preservativo, pruebas periódicas y vacunación** (como contra el VPH y la hepatitis B). Si se detecta una ETS, **es fundamental seguir el tratamiento adecuado y comunicarlo a la pareja** para evitar su propagación.
   utter_ask_nombre_ets:
-  - text: Por favor indica el nombre de la ETS que tienes o has tenido.
-  # enviar opcioens de nombre de enfernedades
+  - text: Por favor, indica el nombre de la ETS que tienes o has tenido.
+    custom:
+      buttons:
+      - title: VPH
+      - title: Clamidia
+      - title: Gonorrea
+      - title: Sifilis
+      - title: Herpes
+      - title: VIH/SIDA
+      - title: Hepatitis B
   utter_ask_automuestreo_form_tiene_enfermedad_autoinmune:
   - text: ¿Ha sido diagnosticado con alguna enfermedad autoinmune?
     buttons:
@@ -269,32 +288,33 @@ responses:
       payload: /confirmacion{{"enfermedad_autoinmune":true}}
     - title: No
       payload: /negacion{{"enfermedad_autoinmune":false}}
-      #boton mas informacion
+    - title: Más información
+      payload: |
+        Las **enfermedades autoinmunes** ocurren cuando el sistema inmunológico ataca por error las células y tejidos sanos del propio cuerpo, en lugar de defenderlo contra infecciones. Esto puede afectar diversos órganos y sistemas, **causando inflamación y daño crónico**. Algunas enfermedades autoinmunes comunes incluyen **la artritis reumatoide, el lupus, la esclerosis múltiple y la diabetes tipo 1**.
+        El diagnóstico suele basarse en **síntomas, análisis de sangre para detectar anticuerpos anormales y estudios de imágenes** para evaluar el daño en los órganos afectados. Estas enfermedades pueden tener síntomas como **fatiga, dolor, inflamación y alteraciones en la piel u órganos internos**.
+        Aunque no tienen cura, **los tratamientos ayudan a controlar los síntomas y reducir la respuesta inmunológica excesiva**. Entre ellos están los medicamentos inmunosupresores, antiinflamatorios y cambios en el estilo de vida. Un diagnóstico temprano y un tratamiento adecuado son clave para mejorar la calidad de vida.
   utter_ask_nombre_enfermedad_autoinmune:
-  - text: Por favor indica el nombre de la enfermedad autoinmune.
-  #enciar nombres de opciones de nefemredadees
+  - text: Por favor, indica el nombre de la enfermedad autoinmune.
+    custom:
+      buttons:
+      - title: Artritis Reumatoide
+      - title: Lupus
+      - title: Esclerosis Múltiple
+      - title: Diabetes
+      - title: Psoriasis
   utter_proceso_completo_indicaciones:
   - text: |
-      ✅ ¡Listo! Cumples con todos los criterios para realizarte la prueba de automuestreo.
+      ✅ ¡Listo! **Cumples con todos los criterios** para realizarte la prueba de Automuestreo.
       Recuerda que **debes realizar la toma de muestra en este momento**, ya que tienes **30 minutos para completar el procedimiento**.
       👉 Ahora, por favor **presiona el botón que aparece en pantalla para que puedas escanear el dispositivo**.
       🔴 Importante:
-        Una vez hayas tomado la muestra, **no olvides entregar el dispositivo en el GAD más cercano**.
+      Una vez hayas tomado la muestra, **no olvides entregar el dispositivo en el GAD más cercano**.
       Si no completas el proceso en el tiempo indicado, tendrás que **volver a iniciar desde cero respondiendo nuevamente todas las preguntas**.
       🕒 ¡Tienes 30 minutos! Comienza ahora presionando el botón.
     custom:
-      text: mostrar video
-  utter_formulario_detenido:
-  - text: |
-      🛑 El proceso de automuestreo ha sido detenido.
-      Si deseas continuar, puedes iniciar nuevamente el proceso.
-      ¿En qué más puedo ayudarte?
-  utter_preguntar_continuar:
-  - text: |
-      ¿Deseas continuar con el proceso de automuestreo?
-      Por favor, responde con "Sí" o "No".
-  utter_automuestreo_introduccion:
-  - text: |
-      📋 **¡Comenzemos con el proceso!**
-      Primero debemos asegurarnos de que eres apta para realizarte el automuestreo en este momento.
-      Por favor, responde a las siguientes preguntas con sinceridad.
+      buttons:
+      - title: ¡Escanear dispositvo!
+        payload: true
+      - title: Ver video
+        payload: true
+  #Espacio para iniciar con las respuestas  generales
