@@ -1,8 +1,7 @@
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormValidationAction
-from rasa_sdk.events import ActiveLoop, FollowupAction
-from typing import Any, Dict, Text, List, Union
+from typing import Any, Dict, Text, List
 import onnxruntime_genai as og
 
 # Cargar el modelo y el tokenizador desde el contenedor
@@ -14,7 +13,7 @@ tokenizer_stream = tokenizer.create_stream()
 
 search_options = { 'max_new_tokens': 290, 'temperature': 0.7 }
 
-# Plantilla para el formato del chat
+# Prompt plantilla para el modelo preentenado
 chat_template = '''<|system|>
                     Eres un asistente médico especializado en salud sexual y reproductiva, enfocado en Virus de Papiloma Humano (VPH), ETS, anticoncepción y prevención del cáncer de cuello uterino.
                     Brindas información clara y confiable sobre estos temas.
@@ -38,9 +37,7 @@ chat_template = '''<|system|>
                     Sigue estas directrices en todas tus respuestas.
                     <|end|>\n<|user|>\n{input} <|end|>\n<|assistant|>'''
 
-# Función para generar respuesta
 def generate_response(input_text):
-    # Crear el prompt con la pregunta del usuario
     prompt = chat_template.format(input=input_text)
 
     # Codificar el prompt a tokens
@@ -48,11 +45,11 @@ def generate_response(input_text):
 
     # Configurar los parámetros del generador
     params = og.GeneratorParams(model)
-    #params.set_search_options(**search_options)
+
     params.input_ids = input_tokens
     # Calcular el límite total de tokens permitidos (entrada + salida)
     total_max_length = len(input_tokens) + search_options.get('max_new_tokens', 250)
-    # ✅ Aplicar opciones de búsqueda correctamente
+    # Aplicar opciones de búsqueda correctamente
     params.set_search_options(
         max_length=total_max_length,
         temperature=search_options.get('temperature', 0.5)
@@ -67,7 +64,6 @@ def generate_response(input_text):
             generator.generate_next_token()
             new_token = generator.get_next_tokens()[0]
             response += tokenizer_stream.decode(new_token)
-        print(response)
     except KeyboardInterrupt:
         print("\n  --control+c pressed, aborting generation--")
     finally:
@@ -79,10 +75,8 @@ class ActionGenerateDetailedResponse(Action):
     def name(self) -> str:
         return "action_consult_info"
     
-
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain):
         user_input = tracker.latest_message.get("text")
-        print("User:", user_input)    
         response = generate_response(user_input)
         dispatcher.utter_message(text=response)
         return []
@@ -91,71 +85,46 @@ class ValidateAutomuestreoForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_automuestreo_form"
     
-    async def extract_fecha_ultima_menstruacion(
-    self, dispatcher, tracker: Tracker, domain
-    ) -> Dict[Text, Any]:
+    async def extract_fecha_ultima_menstruacion(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "fecha_ultima_menstruacion":
             user_input = tracker.latest_message.get("text")
             return {"fecha_ultima_menstruacion": user_input}
-    # Si no es el momento adecuado, no hagas nada
         return {}
     
-    async def extract_fecha_ultimo_pap(
-    self, dispatcher, tracker: Tracker, domain
-    ) -> Dict[Text, Any]:
+    async def extract_fecha_ultimo_pap(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "fecha_ultimo_pap":
             user_input = tracker.latest_message.get("text")
             return {"fecha_ultimo_pap": user_input}
-    # Si no es el momento adecuado, no hagas nada
         return {}
     
-    async def extract_fecha_ultimo_vph(
-    self, dispatcher, tracker: Tracker, domain
-    ) -> Dict[Text, Any]:
+    async def extract_fecha_ultimo_vph(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "fecha_ultimo_vph":
             user_input = tracker.latest_message.get("text")
             return {"fecha_ultimo_vph": user_input}
-    # Si no es el momento adecuado, no hagas nada
         return {}
     
-    async def extract_num_parejas_sexuales(
-    self, dispatcher, tracker: Tracker, domain
-    ) -> Dict[Text, Any]:
+    async def extract_num_parejas_sexuales(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "num_parejas_sexuales":
             user_input = tracker.latest_message.get("text")
             return {"num_parejas_sexuales": user_input}
-    # Si no es el momento adecuado, no hagas nada
         return {}
     
-    async def extract_nombre_ets(
-    self, dispatcher, tracker: Tracker, domain
-    ) -> Dict[Text, Any]:
+    async def extract_nombre_ets(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "nombre_ets":
             user_input = tracker.latest_message.get("text")
             return {"nombre_ets": user_input}
-    # Si no es el momento adecuado, no hagas nada
         return {}
 
-    async def extract_nombre_enfermedad_autoinmune(
-    self, dispatcher, tracker: Tracker, domain
-    ) -> Dict[Text, Any]:
+    async def extract_nombre_enfermedad_autoinmune(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
         if tracker.get_slot("requested_slot") == "nombre_enfermedad_autoinmune":
             user_input = tracker.latest_message.get("text")
             return {"nombre_enfermedad_autoinmune": user_input}
-    # Si no es el momento adecuado, no hagas nada
         return {}
 
-    async def required_slots(
-        self,
-        domain_slots: List[Text],
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[Text]:
+    async def required_slots(self, domain_slots: List[Text], dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
         # Empieza con los slots definidos en el domain.yml
         slots_requeridos = domain_slots.copy()
-
-        # Slots adicionales si cumple con los criterios de inclusion y exclusion
+        # Slots adicionales em base a cumplir con los criterios de inclusion y exclusion
         if tracker.get_slot("edad_usuario") is True:
             slots_requeridos.append("es_sexual_activa")
 
@@ -180,6 +149,7 @@ class ValidateAutomuestreoForm(FormValidationAction):
         if tracker.get_slot("toma_medi_intravaginal") is False:
             slots_requeridos.append("esta_menstruando_ahora")
 
+        #Ultimo criterio de inclusion/exclusion, se agregan todos los slots de salud sexual requeirdos
         if tracker.get_slot("esta_menstruando_ahora") is False:
             slots_requeridos.append("fecha_ultima_menstruacion")
             slots_requeridos.append("fecha_ultimo_pap")
@@ -286,19 +256,14 @@ class ValidateAutomuestreoForm(FormValidationAction):
     def validate_tiene_enfermedad_autoinmune(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         return {"formulario_completo": True}
     
-class ActionDoNothing(Action):
+class ActionFinishForm(Action):
     def name(self) -> Text:
-        return "action_do_nothing"
+        return "action_finish_form"
 
-    async def run(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ):
+    async def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]):
         if tracker.get_slot("formulario_completo") is True:
             dispatcher.utter_message(response="utter_proceso_completo_indicaciones")
         else:
-            dispatcher.utter_message(text="Gracias por particiar en el estudio, en este momento no puede realizarte el automuestreo. Sin embargo, es importante que intentes en otra ocasion")
+            dispatcher.utter_message(text="Gracias por participar en el estudio. 😊 En este momento, no eres apta para hacerte el automuestreo, pero te invitamos a intentarlo más adelante. ¡Apreciamos tu interés!")
         return []
         

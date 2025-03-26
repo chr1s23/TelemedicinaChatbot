@@ -5,7 +5,7 @@ services:
     image: rasa/rasa:3.6.2-full
     container_name: rasa-core
     ports:
-      - "5005:5005"  # Puerto donde escucha Rasa Core HTTP API
+      - "5005:5005"
     volumes:
       - ./:/app  # ruta donde se encuentra el proyecto de Rasa
     command: >
@@ -24,7 +24,7 @@ services:
       context: ./actions  # Carpeta donde está el Dockerfile y el código de acciones
     container_name: rasa-actions
     ports:
-      - "5055:5055"  # Puerto por defecto del action server
+      - "5055:5055"
     networks:
       - rasa-network
 
