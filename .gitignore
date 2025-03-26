@@ -22,6 +22,7 @@ __pycache__/
 *.db
 events.sql
 credentials.yml  # si contiene credenciales sensibles, puedes manejarlo con .env
+.rasa/cache/
 
 # Modelos entrenados
 models/
