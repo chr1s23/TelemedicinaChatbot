@@ -150,7 +150,7 @@ responses:
   utter_ask_automuestreo_form_edad_usuario:
   - text: |
       📋 **¡Comenzemos con el proceso de Automuestreo!**
-      Primero debemos asegurarnos de que **eres apta** para realizarte el automuestreo en este momento.
+      Primero debemos asegurarnos de que **eres apta para realizarte el Automuestreo** en este momento.
       Por favor, ¡responde a las siguientes preguntas con sinceridad!.
       ¿Tu edad está entre los 30 y 65 años?
     buttons:
@@ -179,7 +179,8 @@ responses:
   utter_relacion_reciente:
   - text: Lo sentimos, para realizarte el Automuestreo **no debes tener relaciones sexuales en las últimas 48 horas**. Puedes intentar otro día.
   utter_ask_automuestreo_form_tiene_capacidad_mental:
-  - text: ¿Tienes la capacidad de entender la naturaleza, el propósito y los posibles riesgos del estudio, así como de dar un consentimiento informado?
+  - text: ¿Comprende de qué trata este estudio, para qué se realiza y si podría implicar algún riesgo para usted? ¿Está de acuerdo en participar dando su consentimiento?
+    #¿Tienes la capacidad de entender la naturaleza, el propósito y los posibles riesgos del estudio, así como de dar un consentimiento informado?
     buttons:
     - title: Si
       payload: /confirmacion{{"capacidad_mental":true}}
@@ -242,18 +243,29 @@ responses:
       dias_anteriores: 1 #hasta un dia antetrior
       buttons:
       - title: No Recuerdo
+        payload: No Recuerdo
   utter_ask_automuestreo_form_fecha_ultimo_pap:
-  - text: ¿Cuándo fué tu útltimo examen de Papanicolaou (Pap)?
-    custom:
-      selector_fecha: true
-      buttons:
-      - title: Nunca
+  - text: ¿Hace cuánto fué tu útltimo examen de Papanicolaou (Pap)?
+    buttons:
+    - title: Menos de 1 año
+      payload: MENOS_1_ANIO
+    - title: De 1 a 3 años
+      payload: DE_1_A_3_ANIOS
+    - title: Más 3 años
+      payload: MAS_3_ANIOS
+    - title: Nunca
+      payload: NUNCA
   utter_ask_automuestreo_form_fecha_ultimo_vph:
   - text: ¿Cuándo fué tu última prueba de Virus del Papiloma Humano (VPH)?
-    custom:
-      selector_fecha: true
-      buttons:
-      - title: Nunca
+    buttons:
+    - title: Menos de 1 año
+      payload: MENOS_1_ANIO
+    - title: De 1 a 3 años
+      payload: DE_1_A_3_ANIOS
+    - title: Más 3 años
+      payload: MAS_3_ANIOS
+    - title: Nunca
+      payload: NUNCA
   utter_ask_automuestreo_form_num_parejas_sexuales:
   - text: 'Por favor, indica el número de parejas sexuales que has tenido. (Ejemplo: 2)'
     custom:
@@ -272,15 +284,23 @@ responses:
         La prevención incluye el **uso correcto del preservativo, pruebas periódicas y vacunación** (como contra el VPH y la hepatitis B). Si se detecta una ETS, **es fundamental seguir el tratamiento adecuado y comunicarlo a la pareja** para evitar su propagación.
   utter_ask_nombre_ets:
   - text: Por favor, indica el nombre de la ETS que tienes o has tenido.
-    custom:
-      buttons:
-      - title: VPH
-      - title: Clamidia
-      - title: Gonorrea
-      - title: Sifilis
-      - title: Herpes
-      - title: VIH/SIDA
-      - title: Hepatitis B
+    buttons:
+    - title: VPH
+      payload: VPH
+    - title: Clamidia
+      payload: Clamidia
+    - title: Gonorrea
+      payload: Gonorrea
+    - title: Sifilis
+      payload: Sifilis
+    - title: Herpes
+      payload: Herpes
+    - title: VIH
+      payload: VIH
+    - title: VIH/SIDA
+      payload: VIH/SIDA
+    - title: Hepatitis B
+      payload: Hepatitis B
   utter_ask_automuestreo_form_tiene_enfermedad_autoinmune:
   - text: ¿Ha sido diagnosticado con alguna enfermedad autoinmune?
     buttons:
@@ -295,13 +315,17 @@ responses:
         Aunque no tienen cura, **los tratamientos ayudan a controlar los síntomas y reducir la respuesta inmunológica excesiva**. Entre ellos están los medicamentos inmunosupresores, antiinflamatorios y cambios en el estilo de vida. Un diagnóstico temprano y un tratamiento adecuado son clave para mejorar la calidad de vida.
   utter_ask_nombre_enfermedad_autoinmune:
   - text: Por favor, indica el nombre de la enfermedad autoinmune.
-    custom:
-      buttons:
-      - title: Artritis Reumatoide
-      - title: Lupus
-      - title: Esclerosis Múltiple
-      - title: Diabetes
-      - title: Psoriasis
+    buttons:
+    - title: Artritis Reumatoide
+      payload: Artritis Reumatoide
+    - title: Lupus
+      payload: Lupus
+    - title: Esclerosis Múltiple
+      payload: Esclerosis Múltiple
+    - title: Diabetes
+      payload: Diabetes
+    - title: Psoriasis
+      payload: Psoriasis
   utter_proceso_completo_indicaciones:
   - text: |
       ✅ ¡Listo! **Cumples con todos los criterios** para realizarte la prueba de Automuestreo.
@@ -311,10 +335,9 @@ responses:
       Una vez hayas tomado la muestra, **no olvides entregar el dispositivo en el GAD más cercano**.
       Si no completas el proceso en el tiempo indicado, tendrás que **volver a iniciar desde cero respondiendo nuevamente todas las preguntas**.
       🕒 ¡Tienes 30 minutos! Comienza ahora presionando el botón.
-    custom:
-      buttons:
-      - title: ¡Escanear dispositvo!
-        payload: true
-      - title: Ver video
-        payload: true
+    buttons:
+    - title: ¡Escanear dispositvo!
+      payload: "true"
+    - title: Ver video
+      payload: "true"
   #Espacio para iniciar con las respuestas  generales
