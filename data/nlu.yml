@@ -32,9 +32,9 @@ nlu:
     - gracias por tu atención
 - intent: iniciar_proceso
   examples: |
-    - comenzar automuestreo
-    - comenzar proceso
-    - quiero hacerme el automuestreo
+    - comenzar el proceso de automuestreo
+    - comenzar proceso de la prueba
+    - quiero hacerme la prueba automuestreo
     - quiero tomarme la prueba
     - comenzar auto prueba
     - comenzar prueba
@@ -82,6 +82,8 @@ nlu:
     - relaciones sexuales
     - cancer de cuello uterino
     - virus del papiloma humano
+    - que es el automuestreo?
+    - dime que es el automuestreo?
 - intent: out_of_scope
   examples: |
     - ¿Qué tiempo hace hoy?

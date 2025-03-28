@@ -3,6 +3,7 @@ version: "3.1"
 rules:
 
 - rule: activar automuestreo form
+  conversation_start: true
   steps:
   - intent: iniciar_proceso
   - action: automuestreo_form
