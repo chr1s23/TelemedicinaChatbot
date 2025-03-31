@@ -237,13 +237,12 @@ responses:
   - text: |
       Todo listo! Hemos determinado que **sí eres apta para realizarte el Automuestreo**. Por favor, responde estas preguntas con **sinceridad** para continuar!.
       ¿Fecha del primer día de su última menstruación?
+    buttons:
+    - title: No Recuerdo
+      payload: No Recuerdo
     custom:
-      selector_fecha: true
-      meses_limite_anteriores: 2 #fecha de menstruacion limite de tiempo maximo dos meses antes
-      dias_anteriores: 1 #hasta un dia antetrior
-      buttons:
-      - title: No Recuerdo
-        payload: No Recuerdo
+      data:
+        selector_fecha: true
   utter_ask_automuestreo_form_fecha_ultimo_pap:
   - text: ¿Hace cuánto fué tu útltimo examen de Papanicolaou (Pap)?
     buttons:
@@ -269,7 +268,8 @@ responses:
   utter_ask_automuestreo_form_num_parejas_sexuales:
   - text: 'Por favor, indica el número de parejas sexuales que has tenido. (Ejemplo: 2)'
     custom:
-      teclado_numerico: true
+      data:
+        teclado_numerico: true
   utter_ask_automuestreo_form_tiene_ets:
   - text: ¿Ha sido diagnosticado o sospecha de tener alguna Enfermedad de Transmisión Sexual (ETS)?
     buttons:
