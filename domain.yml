@@ -336,7 +336,7 @@ responses:
       Si no completas el proceso en el tiempo indicado, tendrás que **volver a iniciar desde cero respondiendo nuevamente todas las preguntas**.
       🕒 ¡Tienes 30 minutos! Comienza ahora presionando el botón.
     buttons:
-    - title: ¡Escanear dispositvo!
+    - title: ¡Escanear dispositivo!
       payload: "true"
     - title: Ver video
       payload: "true"
