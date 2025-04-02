@@ -23,7 +23,6 @@ chat_template = '''<|system|>
                     ### **Reglas de Respuesta**:
                     1. **No das diagnósticos ni recomiendas tratamientos.** Siempre sugiere consultar con un médico.
                     2. **Responde de manera clara, científica y comprensible.** Usa lenguaje sencillo y sin juicios.
-                    - **Si la pregunta es sobre métodos anticonceptivos, DEBES DIVIDIRLOS en dos grupos: los que previenen el embarazo y los que protegen contra el VPH. NO PUEDES OMITIR UNO DE LOS GRUPOS.**
                     - Menciónalos en un solo párrafo, sin usar listas ni numeración.
                     3. **Si la pregunta trata sobre violencia sexual, agresión o abuso**:
                     - Responde con empatía, sin culpar a la víctima.
@@ -115,12 +114,6 @@ class ValidateAutomuestreoForm(FormValidationAction):
             return {"nombre_ets": user_input}
         return {}
 
-    async def extract_nombre_enfermedad_autoinmune(self, dispatcher, tracker: Tracker, domain) -> Dict[Text, Any]:
-        if tracker.get_slot("requested_slot") == "nombre_enfermedad_autoinmune":
-            user_input = tracker.latest_message.get("text")
-            return {"nombre_enfermedad_autoinmune": user_input}
-        return {}
-
     async def required_slots(self, domain_slots: List[Text], dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Text]:
         # Empieza con los slots definidos en el domain.yml
         slots_requeridos = domain_slots.copy()
@@ -156,13 +149,9 @@ class ValidateAutomuestreoForm(FormValidationAction):
             slots_requeridos.append("fecha_ultimo_vph")
             slots_requeridos.append("num_parejas_sexuales")
             slots_requeridos.append("tiene_ets")
-            slots_requeridos.append("tiene_enfermedad_autoinmune")
 
         if tracker.get_slot("tiene_ets") is True:
             slots_requeridos.append("nombre_ets")
-
-        if tracker.get_slot("tiene_enfermedad_autoinmune") is True:
-            slots_requeridos.append("nombre_enfermedad_autoinmune")
 
         return slots_requeridos
 
@@ -253,7 +242,7 @@ class ValidateAutomuestreoForm(FormValidationAction):
         else:
             return {"num_parejas_sexuales": slot_value}
         
-    def validate_tiene_enfermedad_autoinmune(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
+    def validate_tiene_ets(self, slot_value: bool, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> Dict[Text, Any]:
         return {"formulario_completo": True}
     
 class ActionFinishForm(Action):
@@ -264,6 +253,6 @@ class ActionFinishForm(Action):
         if tracker.get_slot("formulario_completo") is True:
             dispatcher.utter_message(response="utter_proceso_completo_indicaciones")
         else:
-            dispatcher.utter_message(text="Gracias por participar en el estudio. 😊 En este momento, no eres apta para hacerte el automuestreo, pero te invitamos a intentarlo más adelante. ¡Apreciamos tu interés!")
+            dispatcher.utter_message(text="Gracias por participar en el estudio. 😊 **En este momento, no eres apta para hacerte el automuestreo**, pero te invitamos a intentarlo más adelante. ¡Apreciamos tu interés!")
         return []
         

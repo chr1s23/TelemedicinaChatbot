@@ -17,7 +17,7 @@ pipeline:
   min_ngram: 2
   max_ngram: 4
 - name: DIETClassifier
-  epochs: 120
+  epochs: 200
   batch_strategy: sequence
   learning_rate: 0.002
   constrain_similarities: true
@@ -26,12 +26,16 @@ pipeline:
   constrain_similarities: true
 - name: FallbackClassifier
   threshold: 0.3
-  ambiguity_threshold: 0.1
+  ambiguity_threshold: 0.05
 
 # Configuration for Rasa Core.=
 policies:
 - name: RulePolicy
+- name: MemoizationPolicy
 - name: TEDPolicy
-  max_history: 3
-  epochs: 80
+  max_history: 10
+  epochs: 100
   constrain_similarities: true
+- name: UnexpecTEDIntentPolicy
+  max_history: 5
+  epochs: 50
