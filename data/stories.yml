@@ -6,7 +6,7 @@ stories:
   steps:
   - intent: saludo
   - action: utter_saludo
-  - intent: consult_info
+  - intent: consulta_LLM
   - action: action_consult_info
 
 - story: saludo y despedida
@@ -18,5 +18,1237 @@ stories:
 
 - story: consultar informacion
   steps:
-  - intent: consult_info
+  - intent: consulta_LLM
   - action: action_consult_info
+
+- story: consultar informacion virus del papiloma
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: vph_concepto
+  - action: utter_vph_concepto
+  - intent: vph_tipos
+  - action: utter_vph_tipos
+  - intent: vph_transmision
+  - action: utter_vph_transmision
+  - intent: vph_sintomas
+  - action: utter_vph_sintomas
+  - intent: vph_pruebas_deteccion
+  - action: utter_vph_pruebas_deteccion
+  - intent: vph_frecuencia
+  - action: utter_vph_frecuencia
+  - intent: vph_riesgos_hombres
+  - action: utter_vph_riesgos_hombres
+  - intent: vph_gravedad
+  - action: utter_vph_gravedad
+  - intent: vph_tratamiento
+  - action: utter_vph_tratamiento
+
+- story: consultar informacion cancer cervical
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: cancer_cuello_uterino_concepto
+  - action: utter_cancer_cuello_uterino_concepto
+  - intent: cancer_cuello_uterino_causas
+  - action: utter_cancer_cuello_uterino_causas
+  - intent: cancer_cuello_uterino_sintomas
+  - action: utter_cancer_cuello_uterino_sintomas
+  - intent: cancer_cuello_uterino_tratamiento
+  - action: utter_cancer_cuello_uterino_tratamiento
+
+- story: consultar informacion automuestreo
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+  - intent: automuestreo_concepto
+  - action: utter_automuestreo_concepto
+  - intent: automuestreo_como_hacerlo
+  - action: utter_automuestreo_como_hacerlo
+  - intent: automuestreo_dolor
+  - action: utter_automuestreo_dolor
+
+- story: Información general sobre el VPH
+  steps:
+  - intent: vph_concepto
+  - action: utter_vph_concepto
+  - intent: vph_transmision
+  - action: utter_vph_transmision
+  - intent: vph_tipos
+  - action: utter_vph_tipos
+
+- story: Frecuencia y consecuencias del VPH
+  steps:
+  - intent: vph_frecuencia
+  - action: utter_vph_frecuencia
+  - intent: vph_consecuencias
+  - action: utter_vph_consecuencias
+  - intent: vph_gravedad
+  - action: utter_vph_gravedad
+
+- story: VPH y otras ITS
+  steps:
+  - intent: vph_relacion_con_otras_its_ets
+  - action: utter_vph_relacion_con_otras_its_ets
+  - intent: comparacion_vph_otras_its
+  - action: utter_comparacion_vph_otras_its
+  - intent: vph_vih_diferencias
+  - action: utter_vph_vih_diferencias
+  - intent: vph_herpes_diferencias
+  - action: utter_vph_herpes_diferencias
+
+- story: Síntomas, pruebas y cáncer
+  steps:
+  - intent: vph_sintomas
+  - action: utter_vph_sintomas
+  - intent: vph_asintomatico
+  - action: utter_vph_asintomatico
+  - intent: vph_pruebas_deteccion
+  - action: utter_vph_pruebas_deteccion
+  - intent: vph_relacion_cancer
+  - action: utter_vph_relacion_cancer
+
+- story: VPH en hombres y mujeres
+  steps:
+  - intent: vph_riesgos_hombres
+  - action: utter_vph_riesgos_hombres
+  - intent: vph_riesgos_mujeres
+  - action: utter_vph_riesgos_mujeres
+
+- story: Prevención y tratamiento del VPH
+  steps:
+  - intent: vph_prevencion
+  - action: utter_vph_prevencion
+  - intent: vph_tratamiento
+  - action: utter_vph_tratamiento
+  - intent: vph_vida_sexual
+  - action: utter_vph_vida_sexual
+
+- story: Pareja y sexualidad con VPH
+  steps:
+  - intent: vph_comunicacion_pareja
+  - action: utter_vph_comunicacion_pareja
+  - intent: vph_contacto_pareja
+  - action: utter_vph_contacto_pareja
+  - intent: vph_infidelidad_dudas
+  - action: utter_vph_infidelidad_dudas
+
+- story: VPH y embarazo o fertilidad
+  steps:
+  - intent: vph_fertilidad
+  - action: utter_vph_fertilidad
+  - intent: vph_durante_embarazo
+  - action: utter_vph_durante_embarazo
+
+- story: Vacunas contra el VPH
+  steps:
+  - intent: vph_vacunas
+  - action: utter_vph_vacunas
+  - intent: vph_vacunas_seguridad
+  - action: utter_vph_vacunas_seguridad
+  - intent: vph_vacunas_dosis
+  - action: utter_vph_vacunas_dosis
+  - intent: vph_vacunas_post_infeccion
+  - action: utter_vph_vacunas_post_infeccion
+  - intent: vph_vacunas_efectos_secundarios
+  - action: utter_vph_vacunas_efectos_secundarios
+  - intent: vph_vacunas_beneficios
+  - action: utter_vph_vacunas_beneficios
+  - intent: vph_vacunas_edad
+  - action: utter_vph_vacunas_edad
+
+- story: Causas y enfermedades relacionadas con el VPH
+  steps:
+  - intent: vph_causas
+  - action: utter_vph_causas
+  - intent: vph_causa_otras_enfermedades
+  - action: utter_vph_causa_otras_enfermedades
+
+- story: Concepto y diferencias del VIH
+  steps:
+  - intent: vih_concepto
+  - action: utter_vih_concepto
+  - intent: vih_sida_diferencia
+  - action: utter_vih_sida_diferencia
+
+- story: Transmisión y mitos del VIH
+  steps:
+  - intent: vih_formas_transmision
+  - action: utter_vih_formas_transmision
+  - intent: vih_mitos
+  - action: utter_vih_mitos
+
+- story: Prevención del VIH
+  steps:
+  - intent: vih_prevencion
+  - action: utter_vih_prevencion
+  - intent: vih_prevencion_prep
+  - action: utter_vih_prevencion_prep
+  - intent: vih_prep_efectos_secundarios
+  - action: utter_vih_prep_efectos_secundarios
+  - intent: vih_prep_condon
+  - action: utter_vih_prep_condon
+  - intent: vih_prevencion_pep
+  - action: utter_vih_prevencion_pep
+  - intent: vih_prep_pep_diferencias
+  - action: utter_vih_prep_pep_diferencias
+
+- story: Pruebas de VIH
+  steps:
+  - intent: vih_pruebas
+  - action: utter_vih_pruebas
+  - intent: vih_pruebas_frecuencia
+  - action: utter_vih_pruebas_frecuencia
+
+- story: Síntomas y tratamiento del VIH
+  steps:
+  - intent: vih_sintomas
+  - action: utter_vih_sintomas
+  - intent: vih_asintomatico
+  - action: utter_vih_asintomatico
+  - intent: vih_tratamiento
+  - action: utter_vih_tratamiento
+  - intent: vih_tratamiento_efectividad
+  - action: utter_vih_tratamiento_efectividad
+  - intent: vih_indetectable
+  - action: utter_vih_indetectable
+
+- story: VIH en el embarazo y consecuencias
+  steps:
+  - intent: vih_embarazo
+  - action: utter_vih_embarazo
+  - intent: vih_consecuencias_no_tratar
+  - action: utter_vih_consecuencias_no_tratar
+
+- story: VIH en la pareja
+  steps:
+  - intent: vih_pareja
+  - action: utter_vih_pareja
+
+- story: Concepto y tipos de ITS
+  steps:
+  - intent: its_concepto
+  - action: utter_its_concepto
+  - intent: its_tipos
+  - action: utter_its_tipos
+  - intent: its_diferencias
+  - action: utter_its_diferencias
+
+- story: Prevención de ITS
+  steps:
+  - intent: its_prevencion_metodos
+  - action: utter_its_prevencion_metodos
+  - intent: its_prevencion_preservativo
+  - action: utter_its_prevencion_preservativo
+  - intent: its_prevencion_vacunas
+  - action: utter_its_prevencion_vacunas
+  - intent: its_prevencion_pareja
+  - action: utter_its_prevencion_pareja
+
+- story: Pruebas para ITS
+  steps:
+  - intent: its_pruebas
+  - action: utter_its_pruebas
+  - intent: its_pruebas_donde
+  - action: utter_its_pruebas_donde
+  - intent: its_pruebas_pasos
+  - action: utter_its_pruebas_pasos
+  - intent: its_pruebas_frecuencia
+  - action: utter_its_pruebas_frecuencia
+
+- story: Síntomas de ITS
+  steps:
+  - intent: its_sintomas_generales
+  - action: utter_its_sintomas_generales
+  - intent: its_sintomas_hombres
+  - action: utter_its_sintomas_hombres
+  - intent: its_sintomas_mujeres
+  - action: utter_its_sintomas_mujeres
+  - intent: its_asintomaticas
+  - action: utter_its_asintomaticas
+
+- story: Tratamiento de ITS
+  steps:
+  - intent: its_tratamiento
+  - action: utter_its_tratamiento
+  - intent: its_tratamiento_pareja
+  - action: utter_its_tratamiento_pareja
+
+- story: Consecuencias y tipos específicos de ITS
+  steps:
+  - intent: its_consecuencias
+  - action: utter_its_consecuencias
+  - intent: its_sifilis
+  - action: utter_its_sifilis
+  - intent: its_gonorrea
+  - action: utter_its_gonorrea
+  - intent: its_clamidia
+  - action: utter_its_clamidia
+  - intent: its_herpes
+  - action: utter_its_herpes
+
+- story: Concepto y tipos de ETS
+  steps:
+  - intent: ets_concepto
+  - action: utter_ets_concepto
+  - intent: ets_tipos
+  - action: utter_ets_tipos
+
+- story: Prevención de ETS
+  steps:
+  - intent: ets_prevencion_metodos
+  - action: utter_ets_prevencion_metodos
+  - intent: ets_prevencion_pareja
+  - action: utter_ets_prevencion_pareja
+
+- story: Pruebas para ETS
+  steps:
+  - intent: ets_pruebas
+  - action: utter_ets_pruebas
+  - intent: ets_pruebas_donde
+  - action: utter_ets_pruebas_donde
+  - intent: ets_pruebas_pasos
+  - action: utter_ets_pruebas_pasos
+  - intent: ets_pruebas_frecuencia
+  - action: utter_ets_pruebas_frecuencia
+
+- story: Síntomas de ETS
+  steps:
+  - intent: ets_sintomas_generales
+  - action: utter_ets_sintomas_generales
+  - intent: ets_sintomas_hombres
+  - action: utter_ets_sintomas_hombres
+  - intent: ets_sintomas_mujeres
+  - action: utter_ets_sintomas_mujeres
+  - intent: ets_asintomaticas
+  - action: utter_ets_asintomaticas
+
+- story: Tratamiento de ETS y consecuencias
+  steps:
+  - intent: ets_tratamiento
+  - action: utter_ets_tratamiento
+  - intent: ets_tratamiento_pareja
+  - action: utter_ets_tratamiento_pareja
+  - intent: ets_consecuencias
+  - action: utter_ets_consecuencias
+
+- story: Prevención del embarazo
+  steps:
+  - intent: embarazo_prev_metodos
+  - action: utter_embarazo_prev_metodos
+  - intent: embarazo_prev_efectividad
+  - action: utter_embarazo_prev_efectividad
+  - intent: embarazo_prev_donde_conseguir
+  - action: utter_embarazo_prev_donde_conseguir
+
+- story: Embarazo seguro – cuidados generales
+  steps:
+  - intent: embarazo_seguro_control_prenatal
+  - action: utter_embarazo_seguro_control_prenatal
+  - intent: embarazo_seguro_signos_riesgo
+  - action: utter_embarazo_seguro_signos_riesgo
+  - intent: embarazo_seguro_alimentacion
+  - action: utter_embarazo_seguro_alimentacion
+  - intent: embarazo_seguro_ejercicio
+  - action: utter_embarazo_seguro_ejercicio
+  - intent: embarazo_seguro_medicacion
+  - action: utter_embarazo_seguro_medicacion
+  - intent: embarazo_seguro_vacunas
+  - action: utter_embarazo_seguro_vacunas
+
+- story: Parto seguro – preparación y tipos
+  steps:
+  - intent: parto_seguro_tipos
+  - action: utter_parto_seguro_tipos
+  - intent: parto_seguro_preparacion
+  - action: utter_parto_seguro_preparacion
+  - intent: parto_seguro_hospital_o_casa
+  - action: utter_parto_seguro_hospital_o_casa
+  - intent: parto_seguro_dolor
+  - action: utter_parto_seguro_dolor
+  - intent: parto_seguro_signos_inicio
+  - action: utter_parto_seguro_signos_inicio
+
+- story: Complicaciones durante el embarazo
+  steps:
+  - intent: embarazo_seguro_parto_prematuro
+  - action: utter_embarazo_seguro_parto_prematuro
+  - intent: embarazo_seguro_preeclampsia
+  - action: utter_embarazo_seguro_preeclampsia
+  - intent: embarazo_seguro_diabetes_gestacional
+  - action: utter_embarazo_seguro_diabetes_gestacional
+
+- story: Riesgos durante el parto
+  steps:
+  - intent: parto_seguro_riesgos
+  - action: utter_parto_seguro_riesgos
+  - intent: parto_seguro_hemorragia
+  - action: utter_parto_seguro_hemorragia
+
+- story: Postparto seguro
+  steps:
+  - intent: postparto_seguro_cuidados_madre
+  - action: utter_postparto_seguro_cuidados_madre
+  - intent: postparto_seguro_lactancia
+  - action: utter_postparto_seguro_lactancia
+  - intent: postparto_seguro_depresion
+  - action: utter_postparto_seguro_depresion
+  - intent: postparto_seguro_rehabilitacion
+  - action: utter_postparto_seguro_rehabilitacion
+
+- story: Concepto y tipos de violencia de género
+  steps:
+  - intent: violencia_genero_concepto
+  - action: utter_violencia_genero_concepto
+  - intent: violencia_genero_tipos
+  - action: utter_violencia_genero_tipos
+
+- story: Tipos específicos de violencia de género
+  steps:
+  - intent: violencia_genero_familiar
+  - action: utter_violencia_genero_familiar
+  - intent: violencia_genero_psicologica
+  - action: utter_violencia_genero_psicologica
+  - intent: violencia_genero_fisica
+  - action: utter_violencia_genero_fisica
+  - intent: violencia_genero_economica
+  - action: utter_violencia_genero_economica
+  - intent: violencia_genero_sexual
+  - action: utter_violencia_genero_sexual
+
+- story: Señales y prevención
+  steps:
+  - intent: violencia_genero_signos
+  - action: utter_violencia_genero_signos
+  - intent: violencia_genero_prevencion
+  - action: utter_violencia_genero_prevencion
+  - intent: violencia_genero_prevencion_hijos
+  - action: utter_violencia_genero_prevencion_hijos
+  - intent: violencia_genero_autocuidado
+  - action: utter_violencia_genero_autocuidado
+
+- story: Denuncia de violencia de género
+  steps:
+  - intent: violencia_genero_denuncia_donde
+  - action: utter_violencia_genero_denuncia_donde
+  - intent: violencia_genero_denuncia_como
+  - action: utter_violencia_genero_denuncia_como
+  - intent: violencia_genero_denuncia_sin_pruebas
+  - action: utter_violencia_genero_denuncia_sin_pruebas
+
+- story: Derechos y medidas de protección
+  steps:
+  - intent: violencia_genero_derechos
+  - action: utter_violencia_genero_derechos
+  - intent: violencia_genero_orden_restriccion
+  - action: utter_violencia_genero_orden_restriccion
+
+- story: Pedir ayuda y describir el caso
+  steps:
+  - intent: violencia_genero_pido_ayuda
+  - action: utter_violencia_genero_pido_ayuda
+  - intent: violencia_genero_describe_caso
+  - action: utter_violencia_genero_describe_caso
+  - intent: violencia_genero_riesgo_alto
+  - action: utter_violencia_genero_riesgo_alto
+
+- story: Confidencialidad y redes de apoyo
+  steps:
+  - intent: violencia_genero_confidencialidad
+  - action: utter_violencia_genero_confidencialidad
+  - intent: violencia_genero_redes_apoyo
+  - action: utter_violencia_genero_redes_apoyo
+  - intent: violencia_genero_contactos
+  - action: utter_violencia_genero_contactos
+  - intent: violencia_genero_recursos_legales
+  - action: utter_violencia_genero_recursos_legales
+
+- story: Concepto y derechos en salud sexual
+  steps:
+  - intent: salud_sexual_concepto
+  - action: utter_salud_sexual_concepto
+  - intent: salud_sexual_derechos
+  - action: utter_salud_sexual_derechos
+  - intent: salud_sexual_importancia
+  - action: utter_salud_sexual_importancia
+
+- story: Relaciones y consentimiento
+  steps:
+  - intent: salud_sexual_relaciones_sanas
+  - action: utter_salud_sexual_relaciones_sanas
+  - intent: salud_sexual_consentimiento
+  - action: utter_salud_sexual_consentimiento
+
+- story: Autoconocimiento y orientación
+  steps:
+  - intent: salud_sexual_autoconocimiento
+  - action: utter_salud_sexual_autoconocimiento
+  - intent: salud_sexual_orientacion_identidad
+  - action: utter_salud_sexual_orientacion_identidad
+
+- story: Prácticas seguras y planificación
+  steps:
+  - intent: salud_sexual_practicas_seguras
+  - action: utter_salud_sexual_practicas_seguras
+  - intent: salud_sexual_primera_vez
+  - action: utter_salud_sexual_primera_vez
+  - intent: salud_sexual_planificacion_familiar
+  - action: utter_salud_sexual_planificacion_familiar
+
+- story: Placer, autocuidado y servicios
+  steps:
+  - intent: salud_sexual_placer
+  - action: utter_salud_sexual_placer
+  - intent: salud_sexual_autocuidado
+  - action: utter_salud_sexual_autocuidado
+  - intent: salud_sexual_servicios
+  - action: utter_salud_sexual_servicios
+  - intent: salud_sexual_anonimato
+  - action: utter_salud_sexual_anonimato
+  - intent: salud_sexual_revisiones
+  - action: utter_salud_sexual_revisiones
+
+- story: Concepto y utilidad del automuestreo
+  steps:
+  - intent: automuestreo_concepto
+  - action: utter_automuestreo_concepto
+  - intent: automuestreo_importancia
+  - action: utter_automuestreo_importancia
+  - intent: automuestreo_vs_papanicolaou
+  - action: utter_automuestreo_vs_papanicolaou
+
+- story: Quién, cómo y cuándo realizar el automuestreo
+  steps:
+  - intent: automuestreo_quien_debe_hacerlo
+  - action: utter_automuestreo_quien_debe_hacerlo
+  - intent: automuestreo_como_hacerlo
+  - action: utter_automuestreo_como_hacerlo
+  - intent: automuestreo_cuando_hacerlo
+  - action: utter_automuestreo_cuando_hacerlo
+  - intent: automuestreo_dolor
+  - action: utter_automuestreo_dolor
+
+- story: Errores, efectividad y mitos
+  steps:
+  - intent: automuestreo_errores_comunes
+  - action: utter_automuestreo_errores_comunes
+  - intent: automuestreo_efectividad
+  - action: utter_automuestreo_efectividad
+  - intent: automuestreo_confiabilidad
+  - action: utter_automuestreo_confiabilidad
+  - intent: automuestreo_mitos
+  - action: utter_automuestreo_mitos
+
+- story: Efectos y resultados del automuestreo
+  steps:
+  - intent: automuestreo_efectos_secundarios
+  - action: utter_automuestreo_efectos_secundarios
+  - intent: automuestreo_interpretacion_resultados
+  - action: utter_automuestreo_interpretacion_resultados
+  - intent: automuestreo_resultado_positivo
+  - action: utter_automuestreo_resultado_positivo
+  - intent: automuestreo_resultado_negativo
+  - action: utter_automuestreo_resultado_negativo
+
+- story: Dónde realizar el automuestreo
+  steps:
+  - intent: automuestreo_donde_hacerlo
+  - action: utter_automuestreo_donde_hacerlo
+
+- story: Concepto y causas del cáncer de cuello uterino
+  steps:
+  - intent: cancer_cuello_uterino_concepto
+  - action: utter_cancer_cuello_uterino_concepto
+  - intent: cancer_cuello_uterino_causas
+  - action: utter_cancer_cuello_uterino_causas
+  - intent: cancer_cuello_uterino_factores_riesgo
+  - action: utter_cancer_cuello_uterino_factores_riesgo
+  - intent: cancer_cuello_uterino_mitos
+  - action: utter_cancer_cuello_uterino_mitos
+
+- story: Prevención y pruebas
+  steps:
+  - intent: cancer_cuello_uterino_prevencion
+  - action: utter_cancer_cuello_uterino_prevencion
+  - intent: cancer_cuello_uterino_vph
+  - action: utter_cancer_cuello_uterino_vph
+  - intent: cancer_cuello_uterino_vacuna
+  - action: utter_cancer_cuello_uterino_vacuna
+  - intent: cancer_cuello_uterino_pruebas
+  - action: utter_cancer_cuello_uterino_pruebas
+  - intent: cancer_cuello_uterino_papanicolaou
+  - action: utter_cancer_cuello_uterino_papanicolaou
+  - intent: cancer_cuello_uterino_automuestreo
+  - action: utter_cancer_cuello_uterino_automuestreo
+
+- story: Síntomas y diagnóstico
+  steps:
+  - intent: cancer_cuello_uterino_sintomas
+  - action: utter_cancer_cuello_uterino_sintomas
+  - intent: cancer_cuello_uterino_asintomatico
+  - action: utter_cancer_cuello_uterino_asintomatico
+  - intent: cancer_cuello_uterino_etapas
+  - action: utter_cancer_cuello_uterino_etapas
+  - intent: cancer_cuello_uterino_diagnostico
+  - action: utter_cancer_cuello_uterino_diagnostico
+
+- story: Tratamiento del cáncer de cuello uterino
+  steps:
+  - intent: cancer_cuello_uterino_tratamiento
+  - action: utter_cancer_cuello_uterino_tratamiento
+  - intent: cancer_cuello_uterino_cura
+  - action: utter_cancer_cuello_uterino_cura
+  - intent: cancer_cuello_uterino_quimioterapia
+  - action: utter_cancer_cuello_uterino_quimioterapia
+  - intent: cancer_cuello_uterino_cirugia
+  - action: utter_cancer_cuello_uterino_cirugia
+
+- story: Fertilidad, apoyo y recuperación
+  steps:
+  - intent: cancer_cuello_uterino_fertilidad
+  - action: utter_cancer_cuello_uterino_fertilidad
+  - intent: cancer_cuello_uterino_apoyo_emocional
+  - action: utter_cancer_cuello_uterino_apoyo_emocional
+  - intent: cancer_cuello_uterino_recuperacion
+  - action: utter_cancer_cuello_uterino_recuperacion
+
+- story: Concepto e importancia de la higiene
+  steps:
+  - intent: higiene_concepto
+  - action: utter_higiene_concepto
+  - intent: higiene_importancia
+  - action: utter_higiene_importancia
+
+- story: Frecuencia e higiene personal
+  steps:
+  - intent: higiene_frecuencia
+  - action: utter_higiene_frecuencia
+  - intent: higiene_autocuidado
+  - action: utter_higiene_autocuidado
+
+- story: Higiene de la ropa
+  steps:
+  - intent: higiene_ropa
+  - action: utter_higiene_ropa
+  - intent: higiene_ropa_frecuencia
+  - action: utter_higiene_ropa_frecuencia
+
+- story: Efectos de la higiene excesiva y enfermedades
+  steps:
+  - intent: higiene_excesiva_efectos
+  - action: utter_higiene_excesiva_efectos
+  - intent: higiene_enfermedades_relacionadas
+  - action: utter_higiene_enfermedades_relacionadas
+
+- story: Concepto, frecuencia y causas de infertilidad
+  steps:
+  - intent: infertilidad_concepto
+  - action: utter_infertilidad_concepto
+  - intent: infertilidad_frecuencia
+  - action: utter_infertilidad_frecuencia
+  - intent: infertilidad_causas
+  - action: utter_infertilidad_causas
+
+- story: Prevención y estilo de vida
+  steps:
+  - intent: infertilidad_prevencion
+  - action: utter_infertilidad_prevencion
+  - intent: infertilidad_estilo_vida
+  - action: utter_infertilidad_estilo_vida
+  - intent: infertilidad_alimentacion
+  - action: utter_infertilidad_alimentacion
+
+- story: Enfermedades y edad relacionadas con infertilidad
+  steps:
+  - intent: infertilidad_enfermedades
+  - action: utter_infertilidad_enfermedades
+  - intent: infertilidad_edad
+  - action: utter_infertilidad_edad
+
+- story: Infertilidad masculina y femenina
+  steps:
+  - intent: infertilidad_masculina
+  - action: utter_infertilidad_masculina
+  - intent: infertilidad_femenina
+  - action: utter_infertilidad_femenina
+
+- story: Infertilidad en la pareja y diagnóstico
+  steps:
+  - intent: infertilidad_pareja
+  - action: utter_infertilidad_pareja
+  - intent: infertilidad_pruebas
+  - action: utter_infertilidad_pruebas
+
+- story: Tratamientos y alternativas
+  steps:
+  - intent: infertilidad_tratamiento
+  - action: utter_infertilidad_tratamiento
+  - intent: infertilidad_fertilidad_asistida
+  - action: utter_infertilidad_fertilidad_asistida
+  - intent: infertilidad_alternativas
+  - action: utter_infertilidad_alternativas
+
+- story: Transmisión de infecciones de transmisión sexual
+  steps:
+  - intent: vph_transmision
+  - action: utter_vph_transmision
+  - intent: vih_formas_transmision
+  - action: utter_vih_formas_transmision
+  - intent: its_concepto
+  - action: utter_its_concepto
+  - intent: ets_concepto
+  - action: utter_ets_concepto
+
+- story: Pruebas de ITS, VIH y VPH
+  steps:
+  - intent: vph_pruebas_deteccion
+  - action: utter_vph_pruebas_deteccion
+  - intent: vih_pruebas
+  - action: utter_vih_pruebas
+  - intent: vih_pruebas_frecuencia
+  - action: utter_vih_pruebas_frecuencia
+  - intent: its_pruebas
+  - action: utter_its_pruebas
+  - intent: its_pruebas_donde
+  - action: utter_its_pruebas_donde
+  - intent: its_pruebas_frecuencia
+  - action: utter_its_pruebas_frecuencia
+
+- story: Síntomas de ITS, VIH y VPH
+  steps:
+  - intent: vph_sintomas
+  - action: utter_vph_sintomas
+  - intent: vph_asintomatico
+  - action: utter_vph_asintomatico
+  - intent: vih_sintomas
+  - action: utter_vih_sintomas
+  - intent: vih_asintomatico
+  - action: utter_vih_asintomatico
+  - intent: its_sintomas_generales
+  - action: utter_its_sintomas_generales
+  - intent: its_asintomaticas
+  - action: utter_its_asintomaticas
+  - intent: ets_sintomas_generales
+  - action: utter_ets_sintomas_generales
+  - intent: ets_asintomaticas
+  - action: utter_ets_asintomaticas
+
+- story: Prevención combinada de ITS, VIH y VPH
+  steps:
+  - intent: vph_prevencion
+  - action: utter_vph_prevencion
+  - intent: vih_prevencion
+  - action: utter_vih_prevencion
+  - intent: vih_prevencion_prep
+  - action: utter_vih_prevencion_prep
+  - intent: its_prevencion_metodos
+  - action: utter_its_prevencion_metodos
+  - intent: its_prevencion_preservativo
+  - action: utter_its_prevencion_preservativo
+  - intent: ets_prevencion_metodos
+  - action: utter_ets_prevencion_metodos
+
+- story: Tratamientos y manejo de ITS, VIH y VPH
+  steps:
+  - intent: vph_tratamiento
+  - action: utter_vph_tratamiento
+  - intent: vih_tratamiento
+  - action: utter_vih_tratamiento
+  - intent: vih_tratamiento_efectividad
+  - action: utter_vih_tratamiento_efectividad
+  - intent: its_tratamiento
+  - action: utter_its_tratamiento
+  - intent: ets_tratamiento
+  - action: utter_ets_tratamiento
+
+- story: ITS y relaciones de pareja
+  steps:
+  - intent: vph_comunicacion_pareja
+  - action: utter_vph_comunicacion_pareja
+  - intent: vph_contacto_pareja
+  - action: utter_vph_contacto_pareja
+  - intent: vih_pareja
+  - action: utter_vih_pareja
+  - intent: its_prevencion_pareja
+  - action: utter_its_prevencion_pareja
+  - intent: ets_prevencion_pareja
+  - action: utter_ets_prevencion_pareja
+
+- story: Comparaciones y mitos comunes sobre ITS
+  steps:
+  - intent: comparacion_vph_otras_its
+  - action: utter_comparacion_vph_otras_its
+  - intent: vph_vih_diferencias
+  - action: utter_vph_vih_diferencias
+  - intent: vph_herpes_diferencias
+  - action: utter_vph_herpes_diferencias
+  - intent: vih_mitos
+  - action: utter_vih_mitos
+
+- story: Relación entre VPH y cáncer de cuello uterino
+  steps:
+  - intent: vph_concepto
+  - action: utter_vph_concepto
+  - intent: vph_relacion_cancer
+  - action: utter_vph_relacion_cancer
+  - intent: cancer_cuello_uterino_vph
+  - action: utter_cancer_cuello_uterino_vph
+  - intent: cancer_cuello_uterino_concepto
+  - action: utter_cancer_cuello_uterino_concepto
+
+- story: Métodos de detección del VPH y cáncer
+  steps:
+  - intent: vph_pruebas_deteccion
+  - action: utter_vph_pruebas_deteccion
+  - intent: cancer_cuello_uterino_pruebas
+  - action: utter_cancer_cuello_uterino_pruebas
+  - intent: cancer_cuello_uterino_papanicolaou
+  - action: utter_cancer_cuello_uterino_papanicolaou
+  - intent: cancer_cuello_uterino_automuestreo
+  - action: utter_cancer_cuello_uterino_automuestreo
+  - intent: automuestreo_concepto
+  - action: utter_automuestreo_concepto
+
+- story: Realización del automuestreo
+  steps:
+  - intent: automuestreo_quien_debe_hacerlo
+  - action: utter_automuestreo_quien_debe_hacerlo
+  - intent: automuestreo_como_hacerlo
+  - action: utter_automuestreo_como_hacerlo
+  - intent: automuestreo_cuando_hacerlo
+  - action: utter_automuestreo_cuando_hacerlo
+  - intent: automuestreo_dolor
+  - action: utter_automuestreo_dolor
+  - intent: automuestreo_errores_comunes
+  - action: utter_automuestreo_errores_comunes
+
+- story: Comparaciones y efectividad del automuestreo
+  steps:
+  - intent: automuestreo_vs_papanicolaou
+  - action: utter_automuestreo_vs_papanicolaou
+  - intent: automuestreo_efectividad
+  - action: utter_automuestreo_efectividad
+  - intent: automuestreo_confiabilidad
+  - action: utter_automuestreo_confiabilidad
+  - intent: automuestreo_mitos
+  - action: utter_automuestreo_mitos
+
+- story: Resultados del automuestreo
+  steps:
+  - intent: automuestreo_interpretacion_resultados
+  - action: utter_automuestreo_interpretacion_resultados
+  - intent: automuestreo_resultado_positivo
+  - action: utter_automuestreo_resultado_positivo
+  - intent: automuestreo_resultado_negativo
+  - action: utter_automuestreo_resultado_negativo
+  - intent: automuestreo_donde_hacerlo
+  - action: utter_automuestreo_donde_hacerlo
+
+- story: Prevención del VPH y cáncer de cuello uterino
+  steps:
+  - intent: vph_vacunas
+  - action: utter_vph_vacunas
+  - intent: vph_vacunas_seguridad
+  - action: utter_vph_vacunas_seguridad
+  - intent: vph_vacunas_dosis
+  - action: utter_vph_vacunas_dosis
+  - intent: cancer_cuello_uterino_prevencion
+  - action: utter_cancer_cuello_uterino_prevencion
+  - intent: cancer_cuello_uterino_vacuna
+  - action: utter_cancer_cuello_uterino_vacuna
+
+- story: Síntomas y diagnóstico de cáncer por VPH
+  steps:
+  - intent: vph_sintomas
+  - action: utter_vph_sintomas
+  - intent: cancer_cuello_uterino_sintomas
+  - action: utter_cancer_cuello_uterino_sintomas
+  - intent: cancer_cuello_uterino_asintomatico
+  - action: utter_cancer_cuello_uterino_asintomatico
+  - intent: cancer_cuello_uterino_etapas
+  - action: utter_cancer_cuello_uterino_etapas
+  - intent: cancer_cuello_uterino_diagnostico
+  - action: utter_cancer_cuello_uterino_diagnostico
+
+- story: VPH y su relación con el embarazo y la fertilidad
+  steps:
+  - intent: vph_concepto
+  - action: utter_vph_concepto
+  - intent: vph_fertilidad
+  - action: utter_vph_fertilidad
+  - intent: vph_durante_embarazo
+  - action: utter_vph_durante_embarazo
+  - intent: embarazo_seguro_control_prenatal
+  - action: utter_embarazo_seguro_control_prenatal
+  - intent: embarazo_seguro_vacunas
+  - action: utter_embarazo_seguro_vacunas
+
+- story: Infertilidad femenina y causas relacionadas con VPH
+  steps:
+  - intent: infertilidad_concepto
+  - action: utter_infertilidad_concepto
+  - intent: infertilidad_femenina
+  - action: utter_infertilidad_femenina
+  - intent: vph_causa_otras_enfermedades
+  - action: utter_vph_causa_otras_enfermedades
+  - intent: infertilidad_enfermedades
+  - action: utter_infertilidad_enfermedades
+  - intent: infertilidad_prevencion
+  - action: utter_infertilidad_prevencion
+
+- story: Riesgos en el embarazo por antecedentes de ITS
+  steps:
+  - intent: embarazo_seguro_signos_riesgo
+  - action: utter_embarazo_seguro_signos_riesgo
+  - intent: embarazo_seguro_parto_prematuro
+  - action: utter_embarazo_seguro_parto_prematuro
+  - intent: embarazo_seguro_preeclampsia
+  - action: utter_embarazo_seguro_preeclampsia
+  - intent: vph_gravedad
+  - action: utter_vph_gravedad
+
+- story: Prevención del VPH e impacto reproductivo
+  steps:
+  - intent: vph_prevencion
+  - action: utter_vph_prevencion
+  - intent: vph_vacunas
+  - action: utter_vph_vacunas
+  - intent: vph_vacunas_edad
+  - action: utter_vph_vacunas_edad
+  - intent: infertilidad_prevencion
+  - action: utter_infertilidad_prevencion
+  - intent: infertilidad_estilo_vida
+  - action: utter_infertilidad_estilo_vida
+
+- story: Apoyo emocional y planificación familiar
+  steps:
+  - intent: vph_comunicacion_pareja
+  - action: utter_vph_comunicacion_pareja
+  - intent: embarazo_prev_metodos
+  - action: utter_embarazo_prev_metodos
+  - intent: embarazo_prev_efectividad
+  - action: utter_embarazo_prev_efectividad
+
+- story: Planificación familiar y derechos sexuales
+  steps:
+  - intent: salud_sexual_concepto
+  - action: utter_salud_sexual_concepto
+  - intent: salud_sexual_derechos
+  - action: utter_salud_sexual_derechos
+  - intent: salud_sexual_planificacion_familiar
+  - action: utter_salud_sexual_planificacion_familiar
+  - intent: embarazo_prev_metodos
+  - action: utter_embarazo_prev_metodos
+  - intent: embarazo_prev_efectividad
+  - action: utter_embarazo_prev_efectividad
+
+- story: Sexualidad durante el embarazo y cuidados generales
+  steps:
+  - intent: salud_sexual_practicas_seguras
+  - action: utter_salud_sexual_practicas_seguras
+  - intent: salud_sexual_autocuidado
+  - action: utter_salud_sexual_autocuidado
+  - intent: embarazo_seguro_control_prenatal
+  - action: utter_embarazo_seguro_control_prenatal
+  - intent: embarazo_seguro_alimentacion
+  - action: utter_embarazo_seguro_alimentacion
+  - intent: embarazo_seguro_vacunas
+  - action: utter_embarazo_seguro_vacunas
+
+- story: Infertilidad y apoyo en la pareja
+  steps:
+  - intent: salud_sexual_relaciones_sanas
+  - action: utter_salud_sexual_relaciones_sanas
+  - intent: infertilidad_pareja
+  - action: utter_infertilidad_pareja
+  - intent: infertilidad_concepto
+  - action: utter_infertilidad_concepto
+  - intent: infertilidad_tratamiento
+  - action: utter_infertilidad_tratamiento
+  - intent: infertilidad_fertilidad_asistida
+  - action: utter_infertilidad_fertilidad_asistida
+
+- story: Primera vez y salud reproductiva femenina
+  steps:
+  - intent: salud_sexual_primera_vez
+  - action: utter_salud_sexual_primera_vez
+  - intent: salud_sexual_autoconocimiento
+  - action: utter_salud_sexual_autoconocimiento
+  - intent: infertilidad_femenina
+  - action: utter_infertilidad_femenina
+  - intent: infertilidad_prevencion
+  - action: utter_infertilidad_prevencion
+
+- story: Apoyo emocional durante procesos reproductivos
+  steps:
+  - intent: salud_sexual_placer
+  - action: utter_salud_sexual_placer
+  - intent: embarazo_seguro_signos_riesgo
+  - action: utter_embarazo_seguro_signos_riesgo
+  - intent: postparto_seguro_depresion
+  - action: utter_postparto_seguro_depresion
+
+- story: Estilo de vida, fertilidad y embarazo
+  steps:
+  - intent: infertilidad_estilo_vida
+  - action: utter_infertilidad_estilo_vida
+  - intent: infertilidad_alimentacion
+  - action: utter_infertilidad_alimentacion
+  - intent: embarazo_seguro_ejercicio
+  - action: utter_embarazo_seguro_ejercicio
+  - intent: embarazo_seguro_medicacion
+  - action: utter_embarazo_seguro_medicacion
+
+- story: Autocuidado e higiene en la salud sexual
+  steps:
+  - intent: salud_sexual_autocuidado
+  - action: utter_salud_sexual_autocuidado
+  - intent: higiene_concepto
+  - action: utter_higiene_concepto
+  - intent: higiene_importancia
+  - action: utter_higiene_importancia
+  - intent: higiene_autocuidado
+  - action: utter_higiene_autocuidado
+
+- story: Higiene de la ropa y prácticas sexuales
+  steps:
+  - intent: higiene_ropa
+  - action: utter_higiene_ropa
+  - intent: higiene_ropa_frecuencia
+  - action: utter_higiene_ropa_frecuencia
+  - intent: salud_sexual_practicas_seguras
+  - action: utter_salud_sexual_practicas_seguras
+  - intent: salud_sexual_servicios
+  - action: utter_salud_sexual_servicios
+
+- story: Hábitos regulares de higiene y cuidado sexual
+  steps:
+  - intent: higiene_frecuencia
+  - action: utter_higiene_frecuencia
+  - intent: salud_sexual_revisiones
+  - action: utter_salud_sexual_revisiones
+  - intent: salud_sexual_anonimato
+  - action: utter_salud_sexual_anonimato
+
+- story: Higiene excesiva y su impacto en la salud sexual
+  steps:
+  - intent: higiene_excesiva_efectos
+  - action: utter_higiene_excesiva_efectos
+  - intent: higiene_enfermedades_relacionadas
+  - action: utter_higiene_enfermedades_relacionadas
+  - intent: salud_sexual_placer
+  - action: utter_salud_sexual_placer
+  - intent: salud_sexual_consentimiento
+  - action: utter_salud_sexual_consentimiento
+
+- story: Autoconocimiento y limpieza corporal
+  steps:
+  - intent: salud_sexual_autoconocimiento
+  - action: utter_salud_sexual_autoconocimiento
+  - intent: salud_sexual_concepto
+  - action: utter_salud_sexual_concepto
+  - intent: higiene_enfermedades_relacionadas
+  - action: utter_higiene_enfermedades_relacionadas
+
+- story: Conceptos y diferencias entre VPH, ITS y ETS
+  steps:
+  - intent: vph_concepto
+  - action: utter_vph_concepto
+  - intent: its_concepto
+  - action: utter_its_concepto
+  - intent: ets_concepto
+  - action: utter_ets_concepto
+  - intent: comparacion_vph_otras_its
+  - action: utter_comparacion_vph_otras_its
+
+- story: Síntomas comunes y casos sin síntomas
+  steps:
+  - intent: vph_sintomas
+  - action: utter_vph_sintomas
+  - intent: vph_asintomatico
+  - action: utter_vph_asintomatico
+  - intent: its_sintomas_generales
+  - action: utter_its_sintomas_generales
+  - intent: its_asintomaticas
+  - action: utter_its_asintomaticas
+  - intent: ets_sintomas_generales
+  - action: utter_ets_sintomas_generales
+  - intent: ets_asintomaticas
+  - action: utter_ets_asintomaticas
+
+- story: Cómo se transmiten las infecciones
+  steps:
+  - intent: vph_transmision
+  - action: utter_vph_transmision
+  - intent: its_tipos
+  - action: utter_its_tipos
+  - intent: its_diferencias
+  - action: utter_its_diferencias
+  - intent: ets_tipos
+  - action: utter_ets_tipos
+
+- story: Pruebas para detectar infecciones
+  steps:
+  - intent: vph_pruebas_deteccion
+  - action: utter_vph_pruebas_deteccion
+  - intent: its_pruebas
+  - action: utter_its_pruebas
+  - intent: its_pruebas_donde
+  - action: utter_its_pruebas_donde
+  - intent: ets_pruebas
+  - action: utter_ets_pruebas
+  - intent: ets_pruebas_pasos
+  - action: utter_ets_pruebas_pasos
+
+- story: Métodos para prevenir infecciones sexuales
+  steps:
+  - intent: vph_prevencion
+  - action: utter_vph_prevencion
+  - intent: its_prevencion_metodos
+  - action: utter_its_prevencion_metodos
+  - intent: its_prevencion_preservativo
+  - action: utter_its_prevencion_preservativo
+  - intent: ets_prevencion_metodos
+  - action: utter_ets_prevencion_metodos
+
+- story: Tratamiento del VPH, ITS y ETS
+  steps:
+  - intent: vph_tratamiento
+  - action: utter_vph_tratamiento
+  - intent: its_tratamiento
+  - action: utter_its_tratamiento
+  - intent: its_tratamiento_pareja
+  - action: utter_its_tratamiento_pareja
+  - intent: ets_tratamiento
+  - action: utter_ets_tratamiento
+  - intent: ets_tratamiento_pareja
+  - action: utter_ets_tratamiento_pareja
+
+- story: Consecuencias de infecciones no tratadas
+  steps:
+  - intent: vph_consecuencias
+  - action: utter_vph_consecuencias
+  - intent: its_consecuencias
+  - action: utter_its_consecuencias
+  - intent: ets_consecuencias
+  - action: utter_ets_consecuencias
+  - intent: vph_relacion_con_otras_its_ets
+  - action: utter_vph_relacion_con_otras_its_ets
+
+- story: ¿Qué es el automuestreo y cómo ayuda a prevenir el cáncer?
+  steps:
+  - intent: automuestreo_concepto
+  - action: utter_automuestreo_concepto
+  - intent: cancer_cuello_uterino_concepto
+  - action: utter_cancer_cuello_uterino_concepto
+  - intent: cancer_cuello_uterino_automuestreo
+  - action: utter_cancer_cuello_uterino_automuestreo
+  - intent: automuestreo_importancia
+  - action: utter_automuestreo_importancia
+
+- story: ¿Cómo y cuándo hacer el automuestreo?
+  steps:
+  - intent: automuestreo_quien_debe_hacerlo
+  - action: utter_automuestreo_quien_debe_hacerlo
+  - intent: automuestreo_como_hacerlo
+  - action: utter_automuestreo_como_hacerlo
+  - intent: automuestreo_cuando_hacerlo
+  - action: utter_automuestreo_cuando_hacerlo
+  - intent: automuestreo_dolor
+  - action: utter_automuestreo_dolor
+  - intent: automuestreo_errores_comunes
+  - action: utter_automuestreo_errores_comunes
+
+- story: Automuestreo vs Papanicolaou
+  steps:
+  - intent: automuestreo_vs_papanicolaou
+  - action: utter_automuestreo_vs_papanicolaou
+  - intent: cancer_cuello_uterino_papanicolaou
+  - action: utter_cancer_cuello_uterino_papanicolaou
+  - intent: cancer_cuello_uterino_pruebas
+  - action: utter_cancer_cuello_uterino_pruebas
+
+- story: Mitos y efectividad del automuestreo
+  steps:
+  - intent: automuestreo_efectividad
+  - action: utter_automuestreo_efectividad
+  - intent: automuestreo_confiabilidad
+  - action: utter_automuestreo_confiabilidad
+  - intent: automuestreo_mitos
+  - action: utter_automuestreo_mitos
+  - intent: automuestreo_efectos_secundarios
+  - action: utter_automuestreo_efectos_secundarios
+
+- story: Resultados del automuestreo
+  steps:
+  - intent: automuestreo_interpretacion_resultados
+  - action: utter_automuestreo_interpretacion_resultados
+  - intent: automuestreo_resultado_positivo
+  - action: utter_automuestreo_resultado_positivo
+  - intent: automuestreo_resultado_negativo
+  - action: utter_automuestreo_resultado_negativo
+
+- story: Prevención del cáncer de cuello uterino
+  steps:
+  - intent: cancer_cuello_uterino_prevencion
+  - action: utter_cancer_cuello_uterino_prevencion
+  - intent: cancer_cuello_uterino_vacuna
+  - action: utter_cancer_cuello_uterino_vacuna
+  - intent: automuestreo_donde_hacerlo
+  - action: utter_automuestreo_donde_hacerlo
+
+- story: Detección temprana del cáncer
+  steps:
+  - intent: cancer_cuello_uterino_sintomas
+  - action: utter_cancer_cuello_uterino_sintomas
+  - intent: cancer_cuello_uterino_asintomatico
+  - action: utter_cancer_cuello_uterino_asintomatico
+  - intent: cancer_cuello_uterino_etapas
+  - action: utter_cancer_cuello_uterino_etapas
+  - intent: cancer_cuello_uterino_diagnostico
+  - action: utter_cancer_cuello_uterino_diagnostico
+
+- story: VPH, automuestreo y cáncer de cuello uterino
+  steps:
+  - intent: vph_pruebas_deteccion
+  - action: utter_vph_pruebas_deteccion
+  - intent: automuestreo_como_hacerlo
+  - action: utter_automuestreo_como_hacerlo
+  - intent: cancer_cuello_uterino_automuestreo
+  - action: utter_cancer_cuello_uterino_automuestreo
+
+- story: VIH, relaciones sexuales y pareja
+  steps:
+  - intent: vih_concepto
+  - action: utter_vih_concepto
+  - intent: salud_sexual_relaciones_sanas
+  - action: utter_salud_sexual_relaciones_sanas
+  - intent: vih_pareja
+  - action: utter_vih_pareja
+
+- story: ITS, embarazo y prevención
+  steps:
+  - intent: its_consecuencias
+  - action: utter_its_consecuencias
+  - intent: embarazo_seguro_control_prenatal
+  - action: utter_embarazo_seguro_control_prenatal
+  - intent: its_prevencion_pareja
+  - action: utter_its_prevencion_pareja
+
+- story: Salud sexual, primera vez y VIH
+  steps:
+  - intent: salud_sexual_concepto
+  - action: utter_salud_sexual_concepto
+  - intent: salud_sexual_primera_vez
+  - action: utter_salud_sexual_primera_vez
+  - intent: vih_prevencion
+  - action: utter_vih_prevencion
+
+- story: VPH, pareja y fidelidad
+  steps:
+  - intent: vph_contacto_pareja
+  - action: utter_vph_contacto_pareja
+  - intent: vph_infidelidad_dudas
+  - action: utter_vph_infidelidad_dudas
+  - intent: salud_sexual_consentimiento
+  - action: utter_salud_sexual_consentimiento
