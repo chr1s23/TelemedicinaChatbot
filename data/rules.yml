@@ -5,23 +5,14 @@ rules:
 - rule: activar automuestreo form
   steps:
   - intent: iniciar_proceso
-  - action: automuestreo_form
-  - active_loop: automuestreo_form
-
-- rule: terminar formulario completo automuestreo
-  condition:
-  - active_loop: automuestreo_form
-  steps:
-  - action: automuestreo_form
-  - active_loop: null
-  - action: action_finish_form
+  - action: utter_iniciar_automuestreo
 
 - rule: out-of-scope
   steps:
   - intent: out_of_scope
   - action: utter_out_of_scope
 
-- rule: responder cuando no se entienda la pregunta
-  steps:
-  - intent: nlu_fallback
-  - action: action_default_fallback
+#- rule: responder cuando no se entienda la pregunta
+#  steps:
+#  - intent: nlu_fallback
+#  - action: action_default_fallback
