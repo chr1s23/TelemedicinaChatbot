@@ -25,12 +25,14 @@ pipeline:
   epochs: 150
   constrain_similarities: true
 - name: FallbackClassifier
-  threshold: 0.3
-  ambiguity_threshold: 0.05
+  threshold: 0.5
+  ambiguity_threshold: 0.02
 
 # Configuration for Rasa Core.=
 policies:
 - name: RulePolicy
+  core_fallback_action_name: "action_default_fallback"
+  core_fallback_threshold: 0.5
 - name: MemoizationPolicy
 - name: TEDPolicy
   max_history: 10

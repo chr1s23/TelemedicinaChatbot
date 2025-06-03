@@ -290,47 +290,47 @@ stories:
 - story: Concepto y tipos de ETS
   steps:
   - intent: ets_concepto
-  - action: utter_ets_concepto
+  - action: utter_its_concepto
   - intent: ets_tipos
-  - action: utter_ets_tipos
+  - action: utter_its_tipos
 
 - story: Prevención de ETS
   steps:
   - intent: ets_prevencion_metodos
-  - action: utter_ets_prevencion_metodos
+  - action: utter_its_prevencion_metodos
   - intent: ets_prevencion_pareja
-  - action: utter_ets_prevencion_pareja
+  - action: utter_its_prevencion_pareja
 
 - story: Pruebas para ETS
   steps:
   - intent: ets_pruebas
-  - action: utter_ets_pruebas
+  - action: utter_its_pruebas
   - intent: ets_pruebas_donde
-  - action: utter_ets_pruebas_donde
+  - action: utter_its_pruebas_donde
   - intent: ets_pruebas_pasos
-  - action: utter_ets_pruebas_pasos
+  - action: utter_its_pruebas_pasos
   - intent: ets_pruebas_frecuencia
-  - action: utter_ets_pruebas_frecuencia
+  - action: utter_its_pruebas_frecuencia
 
 - story: Síntomas de ETS
   steps:
   - intent: ets_sintomas_generales
-  - action: utter_ets_sintomas_generales
+  - action: utter_its_sintomas_generales
   - intent: ets_sintomas_hombres
-  - action: utter_ets_sintomas_hombres
+  - action: utter_its_sintomas_hombres
   - intent: ets_sintomas_mujeres
-  - action: utter_ets_sintomas_mujeres
+  - action: utter_its_sintomas_mujeres
   - intent: ets_asintomaticas
-  - action: utter_ets_asintomaticas
+  - action: utter_its_asintomaticas
 
 - story: Tratamiento de ETS y consecuencias
   steps:
   - intent: ets_tratamiento
-  - action: utter_ets_tratamiento
+  - action: utter_its_tratamiento
   - intent: ets_tratamiento_pareja
-  - action: utter_ets_tratamiento_pareja
+  - action: utter_its_tratamiento_pareja
   - intent: ets_consecuencias
-  - action: utter_ets_consecuencias
+  - action: utter_its_consecuencias
 
 - story: Prevención del embarazo
   steps:
@@ -697,7 +697,7 @@ stories:
   - intent: its_concepto
   - action: utter_its_concepto
   - intent: ets_concepto
-  - action: utter_ets_concepto
+  - action: utter_its_concepto
 
 - story: Pruebas de ITS, VIH y VPH
   steps:
@@ -729,9 +729,9 @@ stories:
   - intent: its_asintomaticas
   - action: utter_its_asintomaticas
   - intent: ets_sintomas_generales
-  - action: utter_ets_sintomas_generales
+  - action: utter_its_sintomas_generales
   - intent: ets_asintomaticas
-  - action: utter_ets_asintomaticas
+  - action: utter_its_asintomaticas
 
 - story: Prevención combinada de ITS, VIH y VPH
   steps:
@@ -746,7 +746,7 @@ stories:
   - intent: its_prevencion_preservativo
   - action: utter_its_prevencion_preservativo
   - intent: ets_prevencion_metodos
-  - action: utter_ets_prevencion_metodos
+  - action: utter_its_prevencion_metodos
 
 - story: Tratamientos y manejo de ITS, VIH y VPH
   steps:
@@ -759,7 +759,7 @@ stories:
   - intent: its_tratamiento
   - action: utter_its_tratamiento
   - intent: ets_tratamiento
-  - action: utter_ets_tratamiento
+  - action: utter_its_tratamiento
 
 - story: ITS y relaciones de pareja
   steps:
@@ -772,7 +772,7 @@ stories:
   - intent: its_prevencion_pareja
   - action: utter_its_prevencion_pareja
   - intent: ets_prevencion_pareja
-  - action: utter_ets_prevencion_pareja
+  - action: utter_its_prevencion_pareja
 
 - story: Comparaciones y mitos comunes sobre ITS
   steps:
@@ -1057,7 +1057,7 @@ stories:
   - intent: its_concepto
   - action: utter_its_concepto
   - intent: ets_concepto
-  - action: utter_ets_concepto
+  - action: utter_its_concepto
   - intent: comparacion_vph_otras_its
   - action: utter_comparacion_vph_otras_its
 
@@ -1072,9 +1072,9 @@ stories:
   - intent: its_asintomaticas
   - action: utter_its_asintomaticas
   - intent: ets_sintomas_generales
-  - action: utter_ets_sintomas_generales
+  - action: utter_its_sintomas_generales
   - intent: ets_asintomaticas
-  - action: utter_ets_asintomaticas
+  - action: utter_its_asintomaticas
 
 - story: Cómo se transmiten las infecciones
   steps:
@@ -1085,7 +1085,7 @@ stories:
   - intent: its_diferencias
   - action: utter_its_diferencias
   - intent: ets_tipos
-  - action: utter_ets_tipos
+  - action: utter_its_tipos
 
 - story: Pruebas para detectar infecciones
   steps:
@@ -1096,9 +1096,9 @@ stories:
   - intent: its_pruebas_donde
   - action: utter_its_pruebas_donde
   - intent: ets_pruebas
-  - action: utter_ets_pruebas
+  - action: utter_its_pruebas
   - intent: ets_pruebas_pasos
-  - action: utter_ets_pruebas_pasos
+  - action: utter_its_pruebas_pasos
 
 - story: Métodos para prevenir infecciones sexuales
   steps:
@@ -1109,7 +1109,7 @@ stories:
   - intent: its_prevencion_preservativo
   - action: utter_its_prevencion_preservativo
   - intent: ets_prevencion_metodos
-  - action: utter_ets_prevencion_metodos
+  - action: utter_its_prevencion_metodos
 
 - story: Tratamiento del VPH, ITS y ETS
   steps:
@@ -1120,9 +1120,9 @@ stories:
   - intent: its_tratamiento_pareja
   - action: utter_its_tratamiento_pareja
   - intent: ets_tratamiento
-  - action: utter_ets_tratamiento
+  - action: utter_its_tratamiento
   - intent: ets_tratamiento_pareja
-  - action: utter_ets_tratamiento_pareja
+  - action: utter_its_tratamiento_pareja
 
 - story: Consecuencias de infecciones no tratadas
   steps:
@@ -1131,7 +1131,7 @@ stories:
   - intent: its_consecuencias
   - action: utter_its_consecuencias
   - intent: ets_consecuencias
-  - action: utter_ets_consecuencias
+  - action: utter_its_consecuencias
   - intent: vph_relacion_con_otras_its_ets
   - action: utter_vph_relacion_con_otras_its_ets
 
