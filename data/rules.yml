@@ -2,10 +2,10 @@ version: "3.1"
 
 rules:
 
-- rule: activar automuestreo form
-  steps:
-  - intent: iniciar_proceso
-  - action: utter_iniciar_automuestreo
+#- rule: activar automuestreo form
+#  steps:
+#  - intent: iniciar_proceso
+#  - action: utter_iniciar_automuestreo
 
 - rule: out-of-scope
   steps:
