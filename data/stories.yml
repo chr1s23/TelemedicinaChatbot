@@ -231,8 +231,6 @@ stories:
   - action: utter_its_concepto
   - intent: its_tipos
   - action: utter_its_tipos
-  - intent: its_diferencias
-  - action: utter_its_diferencias
 
 - story: Prevención de ITS
   steps:
@@ -261,9 +259,9 @@ stories:
   - intent: its_sintomas_generales
   - action: utter_its_sintomas_generales
   - intent: its_sintomas_hombres
-  - action: utter_its_sintomas_hombres
+  - action: utter_its_sintomas_generales
   - intent: its_sintomas_mujeres
-  - action: utter_its_sintomas_mujeres
+  - action: utter_its_sintomas_generales
   - intent: its_asintomaticas
   - action: utter_its_asintomaticas
 
@@ -316,10 +314,6 @@ stories:
   steps:
   - intent: ets_sintomas_generales
   - action: utter_its_sintomas_generales
-  - intent: ets_sintomas_hombres
-  - action: utter_its_sintomas_hombres
-  - intent: ets_sintomas_mujeres
-  - action: utter_its_sintomas_mujeres
   - intent: ets_asintomaticas
   - action: utter_its_asintomaticas
 
@@ -448,9 +442,9 @@ stories:
   - intent: violencia_genero_pido_ayuda
   - action: utter_violencia_genero_pido_ayuda
   - intent: violencia_genero_describe_caso
-  - action: utter_violencia_genero_describe_caso
+  - action: utter_violencia_genero_pido_ayuda
   - intent: violencia_genero_riesgo_alto
-  - action: utter_violencia_genero_riesgo_alto
+  - action: utter_violencia_genero_pido_ayuda
 
 - story: Confidencialidad y redes de apoyo
   steps:
@@ -459,7 +453,7 @@ stories:
   - intent: violencia_genero_redes_apoyo
   - action: utter_violencia_genero_redes_apoyo
   - intent: violencia_genero_contactos
-  - action: utter_violencia_genero_contactos
+  - action: utter_violencia_genero_pido_ayuda
   - intent: violencia_genero_recursos_legales
   - action: utter_violencia_genero_recursos_legales
 
@@ -545,8 +539,10 @@ stories:
   - action: utter_automuestreo_efectos_secundarios
   - intent: automuestreo_interpretacion_resultados
   - action: utter_automuestreo_interpretacion_resultados
-  - intent: automuestreo_resultado_positivo
-  - action: utter_automuestreo_resultado_positivo
+  - intent: automuestreo_resultado_positivo_alto_riesgo
+  - action: utter_automuestreo_resultado_positivo_alto_riesgo
+  - intent: automuestreo_resultado_positivo_bajo_riesgo
+  - action: utter_automuestreo_resultado_positivo_bajo_riesgo
   - intent: automuestreo_resultado_negativo
   - action: utter_automuestreo_resultado_negativo
 
@@ -837,8 +833,10 @@ stories:
   steps:
   - intent: automuestreo_interpretacion_resultados
   - action: utter_automuestreo_interpretacion_resultados
-  - intent: automuestreo_resultado_positivo
-  - action: utter_automuestreo_resultado_positivo
+  - intent: automuestreo_resultado_positivo_alto_riesgo
+  - action: utter_automuestreo_resultado_positivo_alto_riesgo
+  - intent: automuestreo_resultado_positivo_bajo_riesgo
+  - action: utter_automuestreo_resultado_positivo_bajo_riesgo
   - intent: automuestreo_resultado_negativo
   - action: utter_automuestreo_resultado_negativo
   - intent: automuestreo_donde_hacerlo
@@ -1082,8 +1080,6 @@ stories:
   - action: utter_vph_transmision
   - intent: its_tipos
   - action: utter_its_tipos
-  - intent: its_diferencias
-  - action: utter_its_diferencias
   - intent: ets_tipos
   - action: utter_its_tipos
 
@@ -1183,8 +1179,10 @@ stories:
   steps:
   - intent: automuestreo_interpretacion_resultados
   - action: utter_automuestreo_interpretacion_resultados
-  - intent: automuestreo_resultado_positivo
-  - action: utter_automuestreo_resultado_positivo
+  - intent: automuestreo_resultado_positivo_alto_riesgo
+  - action: utter_automuestreo_resultado_positivo_alto_riesgo
+  - intent: automuestreo_resultado_positivo_bajo_riesgo
+  - action: utter_automuestreo_resultado_positivo_bajo_riesgo
   - intent: automuestreo_resultado_negativo
   - action: utter_automuestreo_resultado_negativo
 
